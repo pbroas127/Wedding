@@ -409,7 +409,14 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
   .travel-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .event-card { grid-template-columns: 1fr; gap: 0.5rem; }
+  .hide-mobile { display: none !important; }
+  .home-row1 { grid-template-columns: 1fr 1fr !important; }
   .filter-bar { padding: 1.5rem 1rem 0; gap: 0.5rem; }
+  #home > div[style*="padding:4rem 2rem"] { padding: 2rem 1.2rem !important; gap: 0 !important; }
+  #home > div[style*="padding:4rem 2rem"] > div { padding: 1.2rem 1rem !important; border: none !important; }
+  #home > div[style*="padding:4rem 2rem"] .section-label { font-size: 0.65rem; margin-bottom: 0.5rem; }
+  #home > div[style*="padding:4rem 2rem"] div[style*="font-size:1.3rem"] { font-size: 1.5rem; }
+  #home > div[style*="padding:4rem 2rem"] div[style*="font-size:0.75rem"] { font-size: 0.8rem; line-height: 1.6; }
   .filter-btn { font-size: 0.55rem; padding: 0.4rem 0.8rem; }
   .party-wrapper { padding: 3rem 1rem; }
   div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
@@ -517,14 +524,14 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
   <!-- Photo preview -->
   <div style="padding:5rem 0 0;"></div>
 
-  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-bottom:4px;">
+  <div class="home-row1" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-bottom:4px;">
     <div style="height:420px; background-image:url('O_E-1.jpg'); background-size:cover; background-position:center 40%;"></div>
-    <div style="height:420px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center 65%;"></div>
+    <div class="hide-mobile" style="height:420px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center 65%;"></div>
     <div style="height:420px; background-image:url('O_E-32.jpg'); background-size:cover; background-position:center 40%;"></div>
   </div>
   <div style="display:grid; grid-template-columns:2fr 1fr; gap:4px; margin-bottom:4px;">
     <div style="height:520px; background-image:url('O_E-23.jpg'); background-size:cover; background-position:center 55%;"></div>
-    <div style="height:520px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center top;"></div>
+    <div style="height:520px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center 50%;"></div>
   </div>
   <div style="display:grid; grid-template-columns:1fr 2fr; gap:4px; margin-bottom:5rem;">
     <div style="height:480px; background-image:url('O_E-58-2.jpg'); background-size:cover; background-position:center center;"></div>
@@ -549,8 +556,8 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
     <div style="height:500px; background-image:url('O_E-9.jpg'); background-size:cover; background-position:center center;"></div>
   </div>
   <div style="display:grid; grid-template-columns:1fr 2fr; gap:4px; margin-top:4px;">
-    <div style="height:580px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center 60%;"></div>
-    <div style="height:580px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center 55%;"></div>
+    <div style="height:580px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center 35%;"></div>
+    <div style="height:580px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center 40%;"></div>
   </div>
   <div style="display:grid; grid-template-columns:2fr 1fr; gap:4px; margin-top:4px;">
     <div style="height:540px; background-image:url('O_E-23.jpg'); background-size:cover; background-position:center 55%;"></div>
