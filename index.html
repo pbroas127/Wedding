@@ -1,1079 +1,1128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olivia & Ethan — April 20, 2027 · Rome</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olivia & Ethan — April 20, 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sage: #818263;
+  --avocado: #C2C395;
+  --blush: #DDBAAE;
+  --peach: #EFD7CF;
+  --oat: #DCD4C1;
+  --honey: #F6EAD4;
+  --cream: #FAF7F2;
+  --dark: #3a3830;
+  --text-muted: #7a7568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  font-weight: 300;
+}
 
-    :root {
-      --ivory:    #FAFAF8;
-      --cream:    #F5F3EC;
-      --pink:     #F2DCDC;
-      --pink-lt:  #FAF0F0;
-      --sage:     #7A9E7E;
-      --sage-dk:  #4A6B4D;
-      --sage-lt:  #B2CEBF;
-      --gold:     #C9A96E;
-      --gold-lt:  #DDBB82;
-      --ink:      #2E3028;
-      --ink-lt:   #4E5248;
-      --muted:    #7A8070;
-      --border:   #DFE4D8;
-      --white:    #FFFFFF;
-    }
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem 4rem;
+  background: rgba(250,247,242,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 0.5px solid var(--oat);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; letter-spacing: 0.18em; font-style: italic;
+  color: var(--sage);
+}
+.nav-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.nav-links a {
+  font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--dark); text-decoration: none; opacity: 0.6;
+  transition: opacity 0.25s; cursor: pointer;
+}
+.nav-links a:hover { opacity: 1; }
 
-    body {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background: var(--ivory);
-      color: var(--ink);
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; }
-    a   { text-decoration: none; color: inherit; }
+/* ── SECTIONS ── */
+.section { display: none; }
+.section.active { display: block; }
 
-    /* ── NAV ── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 900;
-      height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3rem;
-      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
-    }
-    .nav.solid {
-      background: rgba(74,107,77,0.96);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: #fff;
-    }
-    .nav-links { display: flex; list-style: none; gap: 0.1rem; }
-    .nav-links a {
-      display: block; padding: 0.4rem 0.8rem;
-      font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      border-radius: 5px;
-      transition: color 0.2s, background 0.2s;
-    }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.07); }
-    .nav-rsvp {
-      background: var(--gold) !important;
-      color: var(--ink) !important;
-      font-weight: 600 !important;
-    }
-    .nav-rsvp:hover { background: var(--gold-lt) !important; }
+/* ── HERO ── */
+.hero-left {
+  background: var(--honey);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 5rem 3.5rem 5rem 5rem;
+}
+.hero-eyebrow {
+  font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 2rem;
+}
+.hero-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 300; line-height: 1.0;
+  margin-bottom: 1.8rem;
+}
+.hero-names em { font-style: italic; color: var(--sage); display: block; }
+.hero-date-line {
+  font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 2.5rem;
+}
+.hero-divider { width: 36px; height: 0.5px; background: var(--sage); margin-bottom: 1.8rem; }
+.hero-venue {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-style: italic; color: var(--sage); margin-bottom: 0.4rem;
+}
+.hero-venue-sub { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--text-muted); }
+.hero-img {
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
 
-    .nav-burger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; padding: 8px; border: none; background: none;
-    }
-    .nav-burger span { display: block; width: 22px; height: 1.5px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+/* COUNTDOWN */
+.countdown-bar {
+  background: var(--sage);
+  color: var(--cream);
+  display: flex; justify-content: center; gap: 4rem;
+  padding: 2.5rem 2rem;
+}
+.countdown-item { text-align: center; }
+.countdown-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 300; display: block; line-height: 1;
+}
+.countdown-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.7; margin-top: 0.4rem; }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative; height: 100vh; min-height: 600px;
-      overflow: hidden; background: #e8e4dc;
-    }
-    .hero-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
-      transform: scale(1.04);
-      animation: heroZoom 12s ease-out forwards;
-    }
-    @keyframes heroZoom {
-      from { transform: scale(1.04); }
-      to   { transform: scale(1); }
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.52) 100%);
-    }
-    .hero-content {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      text-align: center; padding: 0 1.5rem 5rem;
-      animation: fadeUp 1.2s 0.4s both;
-    }
-    .hero-eyebrow {
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold-lt); margin-bottom: 1.25rem;
-    }
-    .hero-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.5rem, 10vw, 8rem);
-      font-weight: 300; line-height: 1;
-      color: #fff; margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
-    }
-    .hero-names em { font-style: italic; color: var(--gold-lt); }
-    .hero-date {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      font-weight: 300; letter-spacing: 0.18em;
-      color: rgba(255,255,255,0.65);
-      text-transform: uppercase;
-      margin-bottom: 2.5rem;
-    }
-    .hero-scroll {
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-      transition: opacity 0.5s;
-    }
-    .hero-scroll.hidden { opacity: 0; pointer-events: none; }
-    .hero-scroll span {
-      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-    }
-    .scroll-line {
-      width: 1px; height: 44px;
-      background: linear-gradient(to bottom, rgba(201,169,110,0.7), transparent);
-      animation: lineGrow 1.8s ease infinite;
-    }
-    @keyframes lineGrow {
-      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
-      100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 1.5rem;
+}
 
-    /* ── COUNTDOWN BAND ── */
-    .countdown-band {
-      background: var(--sage-dk);
-      padding: 2rem;
-      display: flex; justify-content: center; gap: 0;
-      flex-wrap: wrap;
-    }
-    .cd-unit {
-      padding: 0.75rem 2.5rem;
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.12);
-    }
-    .cd-unit:last-child { border-right: none; }
-    .cd-num {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.75rem; font-weight: 300;
-      color: var(--gold-lt); line-height: 1;
-    }
-    .cd-label {
-      display: block;
-      font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(255,255,255,0.35); margin-top: 0.35rem;
-    }
+/* ── GENERIC PAGE HERO ── */
+.page-hero {
+  height: 38vh; min-height: 260px;
+  background: var(--honey);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  margin-top: 75px;
+  text-align: center;
+}
+.page-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+}
+.page-hero h1 em { font-style: italic; color: var(--sage); }
+.page-hero p {
+  font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--text-muted); margin-top: 0.8rem;
+}
 
-    /* ── SECTION SHARED ── */
-    .section-label {
-      font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--sage); margin-bottom: 0.85rem;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 400; line-height: 1.08;
-      color: var(--ink);
-    }
-    .section-title.on-dark { color: #fff; }
-    .section-rule {
-      width: 36px; height: 1px;
-      background: var(--gold);
-      margin: 1.5rem 0 2.5rem;
-    }
-    .section-rule.center { margin-left: auto; margin-right: auto; }
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block; padding: 0.65rem 1.6rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.25s;
+}
+.btn-sage { background: var(--sage); color: var(--cream); }
+.btn-sage:hover { background: var(--dark); }
+.btn-outline {
+  background: transparent; color: var(--dark);
+  border: 0.5px solid var(--oat);
+}
+.btn-outline:hover { border-color: var(--sage); color: var(--sage); }
+.btn:disabled, .btn.disabled {
+  background: var(--oat); color: var(--text-muted); cursor: not-allowed;
+}
 
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
-    }
-    .reveal.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: 0.1s; }
-    .d2 { transition-delay: 0.2s; }
-    .d3 { transition-delay: 0.3s; }
-    .d4 { transition-delay: 0.4s; }
-    .d5 { transition-delay: 0.5s; }
+/* ── REGISTRY ── */
+.registry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--oat);
+}
+.registry-item {
+  background: var(--cream);
+  padding: 2.5rem;
+  display: flex; flex-direction: column; align-items: flex-start;
+  position: relative;
+}
+.registry-item.claimed { opacity: 0.55; }
+.claimed-badge {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+  background: var(--avocado); color: var(--cream);
+  padding: 0.3rem 0.7rem; border-radius: 20px;
+}
+.item-category {
+  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 0.8rem;
+}
+.item-img {
+  width: 100%; height: 160px;
+  background-size: cover; background-position: center;
+  background-color: var(--peach);
+  margin-bottom: 1.2rem;
+}
+.item-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 400; margin-bottom: 0.4rem;
+}
+.item-store { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+.item-price { font-size: 0.85rem; color: var(--dark); margin-bottom: 1.2rem; }
+.filter-bar {
+  display: flex; gap: 1rem; padding: 2.5rem 3rem 0;
+  flex-wrap: wrap; align-items: center;
+}
+.filter-btn {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.5rem 1.2rem; border: 0.5px solid var(--oat);
+  background: transparent; color: var(--dark); cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+.filter-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
 
-    /* ── GALLERY ── */
-    .gallery-section {
-      background: var(--ivory);
-      padding: 6rem 2rem;
-    }
-    .gallery-head { text-align: center; margin-bottom: 3.5rem; }
-    .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      max-width: 1100px; margin: 0 auto;
-    }
-    .g-item {
-      flex: 0 0 calc(25% - 6px);
-      height: 260px;
-    }
-    .g-item:nth-child(1) { flex: 0 0 calc(50% - 4px); height: 528px; }
-    @media (max-width: 900px) {
-      .g-item { flex: 0 0 calc(33.33% - 6px); height: 220px; }
-      .g-item:nth-child(1) { flex: 0 0 calc(66.66% - 4px); height: 220px; }
-    }
-    @media (max-width: 600px) {
-      .g-item { flex: 0 0 calc(50% - 4px); height: 170px; }
-      .g-item:nth-child(1) { flex: 0 0 calc(100% - 0px); height: 170px; }
-    }
-    .gallery-grid .g-item:nth-child(1)  { grid-column: span 2; grid-row: span 2; }
-    .gallery-grid .g-item:nth-child(7)  { grid-column: span 2; }
-    .gallery-grid .g-item:nth-child(12) { grid-column: span 2; }
+/* ── RSVP ── */
+.rsvp-wrapper {
+  max-width: 640px; margin: 0 auto; padding: 5rem 2rem;
+}
+.rsvp-wrapper h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 300; margin-bottom: 0.6rem;
+}
+.rsvp-wrapper h2 em { font-style: italic; color: var(--sage); }
+.rsvp-intro { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 3rem; }
+.form-group { margin-bottom: 1.8rem; }
+.form-label {
+  display: block; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 0.6rem;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 0.85rem 1rem;
+  font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 300;
+  background: var(--honey); border: 0.5px solid var(--oat);
+  color: var(--dark); outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--sage); }
+.form-textarea { resize: vertical; min-height: 100px; }
+.radio-group { display: flex; gap: 1rem; }
+.radio-label {
+  flex: 1; padding: 0.9rem 1rem;
+  border: 0.5px solid var(--oat);
+  text-align: center; cursor: pointer;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  transition: all 0.2s; background: var(--honey);
+}
+.radio-label:hover { border-color: var(--sage); }
+.radio-label.selected { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+input[type="radio"] { display: none; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.rsvp-success { text-align: center; padding: 4rem 2rem; display: none; }
+.rsvp-success h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 300; margin-bottom: 1rem;
+}
+.rsvp-success h3 em { font-style: italic; color: var(--sage); }
+.rsvp-success p { color: var(--text-muted); line-height: 1.8; }
 
-    .g-item {
-      position: relative; overflow: hidden;
-      border-radius: 4px; cursor: pointer;
-      background: var(--cream);
-    }
-    .g-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .g-item:hover img { transform: scale(1.07); }
-    .g-item::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(28,25,23,0);
-      transition: background 0.35s;
-    }
-    .g-item:hover::after { background: rgba(28,25,23,0.18); }
+/* ── Q&A ── */
+.qa-wrapper { max-width: 720px; margin: 0 auto; padding: 5rem 2rem; }
+.qa-item {
+  border-bottom: 0.5px solid var(--oat); padding: 2rem 0; cursor: pointer;
+}
+.qa-question {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400;
+}
+.qa-toggle { font-size: 1.4rem; color: var(--sage); line-height: 1; transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+.qa-answer {
+  font-size: 0.85rem; line-height: 1.9; color: var(--text-muted);
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+}
+.qa-item.open .qa-answer { max-height: 400px; padding-top: 1.2rem; }
+.qa-item.open .qa-toggle { transform: rotate(45deg); }
 
-    /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none; position: fixed; inset: 0; z-index: 9000;
-      background: rgba(0,0,0,0.94); backdrop-filter: blur(12px);
-      align-items: center; justify-content: center; padding: 2rem;
-    }
-    .lightbox.open { display: flex; }
-    .lb-img {
-      max-width: min(90vw, 1080px); max-height: 86vh;
-      object-fit: contain; border-radius: 4px;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.7);
-      animation: lbIn 0.3s ease both;
-    }
-    @keyframes lbIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
-    .lb-close {
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      background: rgba(255,255,255,0.08); border: none;
-      border-radius: 50%; width: 46px; height: 46px;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s;
-    }
-    .lb-close:hover { background: rgba(255,255,255,0.15); }
-    .lb-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,0.08); border: none;
-      border-radius: 50%; width: 52px; height: 52px;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s;
-    }
-    .lb-arrow:hover { background: rgba(255,255,255,0.15); }
-    .lb-prev { left: 1.5rem; } .lb-next { right: 1.5rem; }
-    .lb-counter {
-      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
-      font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em;
-    }
+/* ── TRAVEL ── */
+.travel-wrapper { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
+.travel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+.travel-card {
+  background: var(--honey); padding: 2rem;
+  border-left: 2px solid var(--blush);
+}
+.travel-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 400; margin-bottom: 0.6rem;
+}
+.travel-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.8; }
+.travel-card a { color: var(--sage); text-decoration: none; }
+.travel-note {
+  background: var(--peach); padding: 2rem 2.5rem; margin-bottom: 2.5rem;
+  border-left: 2px solid var(--blush);
+}
+.travel-note p { font-size: 0.85rem; line-height: 1.8; color: var(--dark); }
+.travel-note strong { color: var(--sage); }
+.travel-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 300; margin: 3rem 0 0.5rem;
+}
+.travel-section-title em { font-style: italic; color: var(--sage); }
 
-    /* ── WEDDING PARTY ── */
-    .party-section {
-      background: var(--pink);
-      padding: 6rem 2rem;
-    }
-    .party-head { text-align: center; margin-bottom: 4rem; }
-    .party-side-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem; font-style: italic; font-weight: 400;
-      color: var(--ink-lt); text-align: center;
-      margin-bottom: 2.5rem;
-    }
-    .party-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.25rem;
-      max-width: 900px; margin: 0 auto 4rem;
-    }
-    .party-card { width: 160px; }
-    .party-card {
-      background: var(--white);
-      border-radius: 6px;
-      padding: 1.75rem 1.25rem 1.5rem;
-      text-align: center;
-      border: 1px solid var(--border);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .party-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(28,25,23,0.08);
-    }
-    .party-avatar {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 2px solid var(--sage-lt);
-      margin: 0 auto 1rem;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 500;
-      color: var(--sage-dk);
-    }
-    .party-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-weight: 600;
-      color: var(--ink); margin-bottom: 0.3rem;
-    }
-    .party-role {
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted);
-    }
-    .party-role.special { color: var(--gold); }
+/* ── THINGS TO DO ── */
+.todo-wrapper { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
+.todo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--oat); margin-top: 2rem; }
+.todo-card { background: var(--cream); padding: 2rem 1.8rem; }
+.todo-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; margin-bottom: 0.5rem;
+}
+.todo-card p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.75; }
+.todo-tag {
+  display: inline-block; margin-bottom: 0.7rem;
+  font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sage);
+}
 
-    .party-divider {
-      width: 60px; height: 1px;
-      background: var(--border);
-      margin: 3rem auto;
-    }
+/* ── WEDDING PARTY ── */
+.party-wrapper { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; }
+.party-section-label {
+  font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 2rem; text-align: center;
+}
 
-    /* ── Q&A ── */
-    .qa-section {
-      background: var(--ivory);
-      padding: 6rem 2rem;
-    }
-    .qa-inner { max-width: 760px; margin: 0 auto; }
-    .qa-head { text-align: center; margin-bottom: 3.5rem; }
-    .qa-list { border-top: 1px solid var(--border); }
-    .qa-item { border-bottom: 1px solid var(--border); }
-    .qa-q {
-      width: 100%; background: none; border: none;
-      padding: 1.35rem 0;
-      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500;
-      color: var(--ink); cursor: pointer; text-align: left;
-    }
-    .qa-q:hover { color: var(--sage-dk); }
-    .qa-chevron { flex-shrink: 0; width: 18px; height: 18px; stroke: var(--sage); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s; }
-    .qa-item.open .qa-chevron { transform: rotate(180deg); }
-    .qa-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    .qa-a-inner { padding: 0 0 1.35rem; font-size: 0.88rem; line-height: 1.85; color: var(--muted); }
-    .qa-a-inner strong { color: var(--ink); font-weight: 600; }
-    .qa-item.open .qa-a { max-height: 500px; }
+/* ── WEEKEND ── */
+.weekend-wrapper { max-width: 860px; margin: 0 auto; padding: 5rem 2rem; }
+.event-card {
+  display: grid; grid-template-columns: 140px 1fr; gap: 2.5rem;
+  padding: 3rem 0; border-bottom: 0.5px solid var(--oat);
+  align-items: start;
+}
+.event-card:first-child { border-top: 0.5px solid var(--oat); }
+.event-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-style: italic; color: var(--sage); line-height: 1.5;
+}
+.event-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 300; margin-bottom: 0.5rem;
+}
+.event-time {
+  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 1rem;
+}
+.event-detail { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; max-width: 520px; }
+.event-tag {
+  display: inline-block; margin-top: 1rem;
+  font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+  background: var(--peach); color: var(--dark);
+  padding: 0.3rem 0.8rem;
+}
 
-    /* ── TRAVEL ── */
-    .travel-section {
-      background: var(--sage-dk);
-      padding: 6rem 2rem;
-      position: relative; overflow: hidden;
-    }
-    .travel-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(178,206,191,0.15) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .travel-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
-    .travel-head { text-align: center; margin-bottom: 3.5rem; }
-    .travel-grid, .todo-grid {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 1.25rem; max-width: 1000px; margin: 0 auto;
-    }
-    .travel-card, .todo-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px; padding: 1.75rem 1.5rem;
-      width: calc(33.33% - 1rem); min-width: 240px;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .travel-card:hover, .todo-card:hover {
-      background: rgba(255,255,255,0.13); transform: translateY(-3px);
-    }
-    .travel-icon, .todo-icon { margin-bottom: 1rem; }
-    .travel-icon svg, .todo-icon svg {
-      display: block; width: 28px; height: 28px;
-      stroke: var(--gold-lt); stroke-width: 1.5; fill: none;
-      stroke-linecap: round; stroke-linejoin: round; overflow: visible;
-    }
-    .todo-section .todo-icon svg { stroke: var(--sage-dk); }
-    .travel-card h3, .todo-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 0.6rem;
-    }
-    .travel-card p, .todo-card p {
-      font-size: 0.82rem; line-height: 1.7; color: rgba(255,255,255,0.6);
-    }
-    .travel-card strong, .todo-card strong { color: var(--gold-lt); font-weight: 600; }
-    .todo-section .todo-card {
-      background: var(--white); border: 1px solid var(--border);
-    }
-    .todo-section .todo-card:hover { background: var(--ivory); }
-    .todo-section .todo-card h3 { color: var(--ink); }
-    .todo-section .todo-card p { color: var(--muted); }
-    .todo-section .todo-card strong { color: var(--sage-dk); }
-    .travel-coming {
-      text-align: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-style: italic;
-      color: rgba(255,255,255,0.3); padding: 3rem 0;
-    }
+/* ── FOOTER ── */
+footer {
+  background: var(--sage); color: var(--cream);
+  text-align: center; padding: 3.5rem 2rem;
+}
+footer .footer-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300; font-style: italic; margin-bottom: 0.5rem;
+}
+footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.6; }
 
-    /* ── THINGS TO DO ── */
-    .todo-section {
-      background: var(--cream);
-      padding: 6rem 2rem;
-    }
-    .todo-inner { max-width: 1100px; margin: 0 auto; }
-    .todo-head { text-align: center; margin-bottom: 3.5rem; }
-    .todo-coming {
-      text-align: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-style: italic;
-      color: var(--muted); padding: 3rem 0;
-    }
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; cursor: pointer; padding: 4px; background: none; border: none;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.5px; background: var(--dark);
+  transition: all 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* ── REGISTRY ── */
-    .registry-section {
-      background: var(--ivory);
-      padding: 6rem 2rem;
-    }
-    .registry-inner { max-width: 760px; margin: 0 auto; text-align: center; }
-    .registry-coming {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-style: italic;
-      color: var(--muted); padding: 3rem 0;
-    }
+.mobile-menu {
+  display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
+  background: rgba(250,247,242,0.98); backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--oat);
+  flex-direction: column; padding: 1rem 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--dark); text-decoration: none; opacity: 0.7;
+  padding: 0.9rem 2rem; cursor: pointer; border-bottom: 0.5px solid var(--oat);
+  transition: opacity 0.2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { opacity: 1; background: var(--honey); }
 
-    /* ── RSVP ── */
-    .rsvp-section {
-      background: var(--sage-dk);
-      padding: 7rem 2rem;
-      position: relative; overflow: hidden;
-    }
-    .rsvp-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(178,206,191,0.15) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .rsvp-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
-    .rsvp-head { text-align: center; margin-bottom: 3rem; }
-    .rsvp-head .section-rule { margin: 1.5rem auto 0; }
-
-    .rsvp-form { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 3rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-    .form-group label {
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px;
-      padding: 0.85rem 1rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      color: #fff;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      width: 100%;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-      background: rgba(255,255,255,0.07);
-    }
-    .form-group select option { background: #1C1917; color: #fff; }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-
-    .btn-submit {
-      display: block; width: 100%;
-      background: var(--gold);
-      color: var(--ink);
-      border: none; border-radius: 6px;
-      padding: 1rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-      margin-top: 0.5rem;
-    }
-    .btn-submit:hover { background: var(--gold-lt); transform: translateY(-1px); }
-
-    .rsvp-note {
-      text-align: center; margin-top: 1.5rem;
-      font-size: 0.78rem; color: rgba(255,255,255,0.25);
-      line-height: 1.6;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--sage-dk);
-      padding: 4rem 2rem 3rem;
-      text-align: center;
-    }
-    .footer-monogram {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem; font-weight: 300; font-style: italic;
-      color: var(--gold); letter-spacing: 0.06em;
-      margin-bottom: 1.25rem;
-    }
-    .footer-date {
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
-      margin-bottom: 2rem;
-    }
-    .footer-nav {
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.25rem;
-      margin-bottom: 2.5rem;
-    }
-    .footer-nav a {
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
-      padding: 0.3rem 0.75rem;
-      transition: color 0.2s;
-    }
-    .footer-nav a:hover { color: rgba(255,255,255,0.6); }
-    .footer-rule { width: 100%; height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 2rem; }
-    .footer-copy {
-      font-size: 0.7rem; color: rgba(255,255,255,0.15); letter-spacing: 0.05em;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-      .gallery-grid .g-item:nth-child(12) { grid-column: span 1; }
-    }
-    @media (max-width: 768px) {
-      .nav { padding: 0 1.25rem; }
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
-      .gallery-grid .g-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-      .gallery-grid .g-item:nth-child(7) { grid-column: span 1; }
-      .form-row { grid-template-columns: 1fr; }
-      .cd-unit { padding: 0.75rem 1.5rem; }
-    }
-    @media (max-width: 520px) {
-      .gallery-grid { grid-auto-rows: 160px; }
-      .party-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; height: 60px; }
+  .nav-logo { font-size: 1.1rem; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero-right-grid { display: none; }
+  .hero-split { grid-template-columns: 1fr !important; }
+  .hero-left { padding: 3.5rem 1.5rem; min-height: calc(100vh - 60px); }
+  .hero-names { font-size: clamp(3rem, 12vw, 4rem); }
+  .countdown-bar { gap: 1.5rem; padding: 2rem 1rem; }
+  .countdown-num { font-size: 2.2rem; }
+  #home > div[style*="grid-template-columns:repeat(3,1fr)"],
+  #home > div[style*="grid-template-columns:2fr 1fr"],
+  #home > div[style*="grid-template-columns:1fr 2fr"] {
+    display: grid; grid-template-columns: 1fr !important;
+  }
+  #home > div[style*="grid-template-columns:repeat(3,1fr)"] > div,
+  #home > div[style*="grid-template-columns:2fr 1fr"] > div,
+  #home > div[style*="grid-template-columns:1fr 2fr"] > div { height: 280px !important; }
+  .page-hero { margin-top: 60px; min-height: 200px; height: 28vh; }
+  .page-hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:2fr 1fr"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:1fr 2fr"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] > div[style*="height:500px"],
+  div[style*="grid-template-columns:1fr 2fr"] > div[style*="height"],
+  div[style*="grid-template-columns:2fr 1fr"] > div[style*="height"] { height: 260px !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"][style*="text-align:center"] { grid-template-columns: 1fr !important; }
+  .registry-grid { grid-template-columns: 1fr !important; margin: 1rem !important; }
+  .todo-grid { grid-template-columns: 1fr 1fr; }
+  .travel-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .event-card { grid-template-columns: 1fr; gap: 0.5rem; }
+  .filter-bar { padding: 1.5rem 1rem 0; gap: 0.5rem; }
+  .filter-btn { font-size: 0.55rem; padding: 0.4rem 0.8rem; }
+  .party-wrapper { padding: 3rem 1rem; }
+  div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
+  .weekend-wrapper, .travel-wrapper, .todo-wrapper, .qa-wrapper, .rsvp-wrapper { padding: 3rem 1.2rem; }
+  .travel-card, .todo-card { padding: 1.5rem; }
+  .radio-group { flex-direction: column; }
+  footer { padding: 2.5rem 1.5rem; }
+  .filter-bar { flex-wrap: wrap; }
+  #home > div[style*="padding:4rem 2rem"] { grid-template-columns: 1fr !important; border: none !important; gap: 0 !important; }
+  #home > div[style*="padding:4rem 2rem"] > div { border: none !important; padding: 1.5rem 1rem; }
+}
+@media (max-width: 480px) {
+  .todo-grid { grid-template-columns: 1fr; }
+  .hero-names { font-size: 3rem; }
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <div class="nav-logo">O &amp; E</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#photos">Photos</a></li>
-      <li><a href="#party">Wedding Party</a></li>
-      <li><a href="#qa">Q&amp;A</a></li>
-      <li><a href="#travel">Travel</a></li>
-      <li><a href="#todo">Things To Do</a></li>
-      <li><a href="#registry">Registry</a></li>
-      <li><a href="#rsvp" class="nav-rsvp">RSVP</a></li>
-    </ul>
-    <button class="nav-burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+<nav>
+  <div class="nav-logo" onclick="showSection('home')" style="cursor:pointer;">
+    <span style="font-style:normal; letter-spacing:0.08em; color:var(--dark); opacity:0.5; font-size:0.7rem;">✦</span>
+    &nbsp;Olivia &amp; Ethan&nbsp;
+    <span style="font-style:normal; letter-spacing:0.08em; color:var(--dark); opacity:0.5; font-size:0.7rem;">✦</span>
+  </div>
+  <div class="nav-links">
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('photos')">Photos</a>
+    <a onclick="showSection('weekend')">The Weekend</a>
+    <a onclick="showSection('party')">Wedding Party</a>
+    <a onclick="showSection('qa')">Q + A</a>
+    <a onclick="showSection('travel')">Travel</a>
+    <a onclick="showSection('todo')">Things to Do</a>
+    <a onclick="showSection('registry')">Registry</a>
+    <a onclick="showSection('rsvp')">RSVP</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <img
-      class="hero-img"
-      src="https://media-api.xogrp.com/images/91a35235-2cc9-49d0-8615-d68e3ac1c959~rt_auto-rs_2880.h?ordering=explicit&quality=90"
-      alt="Olivia and Ethan">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Rome, Italy</p>
-      <h1 class="hero-names">Olivia <em>&amp;</em> Ethan</h1>
-      <p class="hero-date">April &nbsp;20 &nbsp;&middot;&nbsp; 2027</p>
-      <div class="hero-scroll" id="scrollCue">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="navTo('home')">Home</a>
+  <a onclick="navTo('photos')">Photos</a>
+  <a onclick="navTo('weekend')">The Weekend</a>
+  <a onclick="navTo('party')">Wedding Party</a>
+  <a onclick="navTo('qa')">Q + A</a>
+  <a onclick="navTo('travel')">Travel</a>
+  <a onclick="navTo('todo')">Things to Do</a>
+  <a onclick="navTo('registry')">Registry</a>
+  <a onclick="navTo('rsvp')">RSVP</a>
+</div>
+
+<!-- ══ HOME ══ -->
+<div id="home" class="section active">
+  <div class="hero-split" style="display:grid; grid-template-columns:1fr 1fr; min-height:calc(100vh - 75px); margin-top:75px;">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Join us to celebrate</div>
+      <div class="hero-names">
+        Olivia<br>
+        <em>&amp; Ethan</em>
+      </div>
+      <div class="hero-date-line">April 20, 2027 &nbsp;&middot;&nbsp; Rome, Italy</div>
+      <div class="hero-divider"></div>
+      <div class="hero-venue">Casale Doria Pamphilj</div>
+      <div class="hero-venue-sub">Testa di Lepre, Fiumicino &nbsp;&middot;&nbsp; Est. 1649</div>
+      <div style="margin-top:2.5rem; display:flex; gap:1rem;">
+        <button class="btn btn-sage" onclick="showSection('rsvp')">RSVP Now</button>
+        <button class="btn btn-outline" onclick="showSection('registry')">Registry</button>
       </div>
     </div>
-  </section>
-
-  <!-- COUNTDOWN -->
-  <div class="countdown-band">
-    <div class="cd-unit"><span class="cd-num" id="cd-days">—</span><span class="cd-label">Days</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-hours">—</span><span class="cd-label">Hours</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-mins">—</span><span class="cd-label">Minutes</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-secs">—</span><span class="cd-label">Seconds</span></div>
+    <div class="hero-right-grid" style="display:grid; grid-template-rows:58% 42%; grid-template-columns:1fr 1fr;">
+      <div class="hero-img" style="grid-column:1/3; background-image:url('O_E-9.jpg'); background-position:center top;"></div>
+      <div class="hero-img" style="background-image:url('O_E-5.jpg'); background-position:center top;"></div>
+      <div class="hero-img" style="background-image:url('O_E-58-2.jpg'); background-position:center center;"></div>
+    </div>
   </div>
 
-  <!-- PHOTOS -->
-  <section class="gallery-section" id="photos">
-    <div class="gallery-head">
-      <p class="section-label reveal">Olivia &amp; Ethan</p>
-      <h2 class="section-title reveal d1">Photos</h2>
-      <div class="section-rule center reveal d2"></div>
-    </div>
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="g-item reveal" data-src="https://media-api.xogrp.com/images/7b4fdca7-8dc2-41da-815e-78d4654e207a~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/7b4fdca7-8dc2-41da-815e-78d4654e207a~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d1" data-src="https://media-api.xogrp.com/images/279c8249-7b16-4f16-a9c8-69a0b209ddd0~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/279c8249-7b16-4f16-a9c8-69a0b209ddd0~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d2" data-src="https://media-api.xogrp.com/images/a518629f-4fe7-4121-aa4e-20149362f27a~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/a518629f-4fe7-4121-aa4e-20149362f27a~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d3" data-src="https://media-api.xogrp.com/images/0ce2aeeb-4528-4374-93cd-56bef964aa36~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/0ce2aeeb-4528-4374-93cd-56bef964aa36~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal" data-src="https://media-api.xogrp.com/images/6fea63d3-cd56-4684-8727-38521dfa0e44~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/6fea63d3-cd56-4684-8727-38521dfa0e44~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d1" data-src="https://media-api.xogrp.com/images/2fca65fd-f4a8-4861-844f-349e334c1633~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/2fca65fd-f4a8-4861-844f-349e334c1633~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d2" data-src="https://media-api.xogrp.com/images/39cb74aa-b726-432f-98ef-3913a62f993e~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/39cb74aa-b726-432f-98ef-3913a62f993e~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d3" data-src="https://media-api.xogrp.com/images/ec37f837-827c-49ad-af96-213bc008980f~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/ec37f837-827c-49ad-af96-213bc008980f~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal" data-src="https://media-api.xogrp.com/images/b1f6e75e-81c5-4f59-85e5-ded8adfb4713~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/b1f6e75e-81c5-4f59-85e5-ded8adfb4713~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d1" data-src="https://media-api.xogrp.com/images/dd086bd2-d750-49b3-ac1c-cc902e87b8ad~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/dd086bd2-d750-49b3-ac1c-cc902e87b8ad~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d2" data-src="https://media-api.xogrp.com/images/70874fd1-d566-481a-9cfc-1480ddb6eaac~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/70874fd1-d566-481a-9cfc-1480ddb6eaac~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d3" data-src="https://media-api.xogrp.com/images/0ae535cf-dc61-4017-8f34-f4e103028578~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/0ae535cf-dc61-4017-8f34-f4e103028578~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal" data-src="https://media-api.xogrp.com/images/e7c6a386-5605-46d2-9360-a5291b648591~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/e7c6a386-5605-46d2-9360-a5291b648591~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d1" data-src="https://media-api.xogrp.com/images/3e693f8e-fecb-4bf7-bc24-38a9c4cba692~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/3e693f8e-fecb-4bf7-bc24-38a9c4cba692~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d2" data-src="https://media-api.xogrp.com/images/ca8441f4-7991-4544-a954-6d10231cf7bf~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/ca8441f4-7991-4544-a954-6d10231cf7bf~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-      <div class="g-item reveal d3" data-src="https://media-api.xogrp.com/images/2c642681-7b5b-438e-aa13-aaa6bf12506b~rt_auto-rs_2880.h?ordering=explicit&quality=90"><img src="https://media-api.xogrp.com/images/2c642681-7b5b-438e-aa13-aaa6bf12506b~rt_auto-sc_300.300-rs_2880.h?ordering=explicit&quality=75" alt="" loading="lazy"></div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lb-close" id="lbClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-    <button class="lb-arrow lb-prev" id="lbPrev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-    <img class="lb-img" id="lbImg" src="" alt="">
-    <button class="lb-arrow lb-next" id="lbNext"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-    <div class="lb-counter" id="lbCounter"></div>
+  <!-- Countdown -->
+  <div class="countdown-bar">
+    <div class="countdown-item"><span class="countdown-num" id="cd-days">—</span><div class="countdown-label">Days</div></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-hours">—</span><div class="countdown-label">Hours</div></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-mins">—</span><div class="countdown-label">Minutes</div></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-secs">—</span><div class="countdown-label">Seconds</div></div>
   </div>
 
-  <!-- WEDDING PARTY -->
-  <section class="party-section" id="party">
-    <div class="party-head">
-      <p class="section-label reveal">Our People</p>
-      <h2 class="section-title reveal d1">Wedding Party</h2>
-      <div class="section-rule center reveal d2"></div>
+  <!-- Event strip -->
+  <div style="background:var(--peach); display:grid; grid-template-columns:repeat(3,1fr); text-align:center; padding:4rem 2rem; gap:2rem;">
+    <div>
+      <div class="section-label" style="margin-bottom:0.8rem;">April 18 &middot; Welcome BBQ</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; margin-bottom:0.4rem;">7:30 PM</div>
+      <div style="font-size:0.75rem; color:var(--text-muted);">Grand Doria Garden<br>Something Blue Before I Do</div>
     </div>
-
-    <p class="party-side-label reveal">Bride's Side</p>
-    <div class="party-grid">
-      <div class="party-card reveal">
-        <div class="party-avatar">EH</div>
-        <div class="party-name">Emma Harris</div>
-        <div class="party-role special">Maid of Honor</div>
-      </div>
-      <div class="party-card reveal d1">
-        <div class="party-avatar">CC</div>
-        <div class="party-name">Candice Copple</div>
-        <div class="party-role">Bridesmaid</div>
-      </div>
-      <div class="party-card reveal d2">
-        <div class="party-avatar">JC</div>
-        <div class="party-name">Jillian Christian</div>
-        <div class="party-role">Bridesmaid</div>
-      </div>
-      <div class="party-card reveal d3">
-        <div class="party-avatar">JM</div>
-        <div class="party-name">Jordan McGlinchey</div>
-        <div class="party-role">Bridesmaid</div>
-      </div>
-      <div class="party-card reveal">
-        <div class="party-avatar">KG</div>
-        <div class="party-name">Kylie Greenwald</div>
-        <div class="party-role">Bridesmaid</div>
-      </div>
-      <div class="party-card reveal d1">
-        <div class="party-avatar">MR</div>
-        <div class="party-name">Marisa Rodriguez</div>
-        <div class="party-role">Bridesmaid</div>
-      </div>
-      <div class="party-card reveal d2">
-        <div class="party-avatar">OG</div>
-        <div class="party-name">Olivia Garza</div>
-        <div class="party-role">Bridesmaid</div>
-      </div>
-      <div class="party-card reveal d3">
-        <div class="party-avatar">ZK</div>
-        <div class="party-name">Zaira Keaton</div>
-        <div class="party-role">Bridesmaid</div>
-      </div>
-      <div class="party-card reveal">
-        <div class="party-avatar">HB</div>
-        <div class="party-name">Harley Boehm</div>
-        <div class="party-role special">Flower Girl</div>
-      </div>
+    <div style="border-left:0.5px solid var(--blush); border-right:0.5px solid var(--blush);">
+      <div class="section-label" style="margin-bottom:0.8rem;">April 19 &middot; Wedding Day</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; margin-bottom:0.4rem;">3:00 PM Ceremony</div>
+      <div style="font-size:0.75rem; color:var(--text-muted);">Casale Gardens &amp; Grand Hall<br>Garden Party Formal</div>
     </div>
-
-    <div class="party-divider"></div>
-
-    <p class="party-side-label reveal">Groom's Side</p>
-    <div class="party-grid">
-      <div class="party-card reveal">
-        <div class="party-avatar">WB</div>
-        <div class="party-name">Wyatt Boehm</div>
-        <div class="party-role special">Best Man</div>
-      </div>
-      <div class="party-card reveal d1">
-        <div class="party-avatar">CO</div>
-        <div class="party-name">Caleb Oneal</div>
-        <div class="party-role">Groomsman</div>
-      </div>
-      <div class="party-card reveal d2">
-        <div class="party-avatar">GR</div>
-        <div class="party-name">Garret Repa</div>
-        <div class="party-role">Groomsman</div>
-      </div>
-      <div class="party-card reveal d3">
-        <div class="party-avatar">JT</div>
-        <div class="party-name">Jackson Thigpen</div>
-        <div class="party-role">Groomsman</div>
-      </div>
-      <div class="party-card reveal">
-        <div class="party-avatar">MD</div>
-        <div class="party-name">Malcolm Daniels</div>
-        <div class="party-role">Groomsman</div>
-      </div>
-      <div class="party-card reveal d1">
-        <div class="party-avatar">ME</div>
-        <div class="party-name">Momen Elgamiel</div>
-        <div class="party-role">Groomsman</div>
-      </div>
-      <div class="party-card reveal d2">
-        <div class="party-avatar">OH</div>
-        <div class="party-name">Owen Harris</div>
-        <div class="party-role">Groomsman</div>
-      </div>
-      <div class="party-card reveal d3">
-        <div class="party-avatar">SL</div>
-        <div class="party-name">Seth LaVergne</div>
-        <div class="party-role">Groomsman</div>
-      </div>
+    <div>
+      <div class="section-label" style="margin-bottom:0.8rem;">April 20 &middot; Farewell Pizza</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; margin-bottom:0.4rem;">7:00 PM</div>
+      <div style="font-size:0.75rem; color:var(--text-muted);">Bar Emporio Courtyard<br>Resort Casual</div>
     </div>
-  </section>
+  </div>
 
-  <!-- Q&A -->
-  <section class="qa-section" id="qa">
-    <div class="qa-inner">
-      <div class="qa-head">
-        <p class="section-label reveal">Have Questions?</p>
-        <h2 class="section-title reveal d1">Q &amp; A</h2>
-        <div class="section-rule center reveal d2"></div>
-      </div>
-      <div class="qa-list reveal d1">
-        <div class="qa-item">
-          <button class="qa-q">Where exactly is the wedding taking place?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">The wedding is at <strong>Casale Doria Pamphilj</strong>, a beautifully restored organic farm and granary in the Roman countryside — just 25 km from central Rome and 10 minutes from the Mediterranean coast. The estate features a main garden, an antique wine cellar ("Cantinone"), a courtyard bar, and a swimming pool.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">How do I get there?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">The venue is <strong>30 minutes from both Rome airports</strong> — Fiumicino (FCO) and Ciampino (CIA). The venue can help pre-arrange minivans or coaches for groups. We recommend flying into Rome and arranging a transfer. We will share more transportation details closer to the date.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">What does accommodation cost?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">On-site accommodation is <strong>€75 per person per night</strong>, including a full buffet breakfast each morning. Single room supplement is €20/night. Children under 12 stay free when sharing their parents' room. The estate has 23 rooms and 7 apartments accommodating up to 80 guests.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">What is included in the weekend events?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">We are covering all three main event meals — the Day 1 Welcome BBQ, the full wedding day reception and multi-course dinner, and the Day 3 Farewell Pizza Party. Unlimited wine, beer, and prosecco are included during all three events. Buffet breakfast is included with your room each morning.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">What costs are guests responsible for?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">Guests are responsible for their own <strong>flights, accommodation (€75/person/night)</strong>, and transfers. Lunches are available to purchase daily at the Bar Emporio. Spirits and cocktails outside of event times are available at the bar on consumption. Optional excursions are at your own cost.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">How much should I budget for the weekend?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">We recommend budgeting approximately <strong>€150–€250 per person</strong> for the full weekend. This comfortably covers 3 nights accommodation, airport transfers, a few lunches, and any extra drinks or excursions you choose to enjoy.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">What is the dress code?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner"><strong>Wedding Day:</strong> Formal attire. The venue has a romantic, rustic-chic atmosphere so gowns, suits, and cocktail dresses are all welcome.<br><br><strong>Day 1 BBQ & Day 3 Pizza Party:</strong> Smart-casual. Think sundresses, linen trousers, and relaxed evening wear. Don't forget comfortable shoes if you plan to explore the countryside.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">Are children welcome?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">Absolutely. Children ages <strong>0–3 eat free</strong> at all events. Ages 4–11 have a special children's menu (€25–30). Ages 12–17 are charged at 50% of the adult rate. Kids under 12 stay free sharing parents' room. The estate also has an outdoor pool, playground, and a games room.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">What is there to do on Day 3?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">Day 3 is all about relaxing before the evening pizza party. On-site you have the pool, games room, and organic farm to explore. Nearby options include <strong>Singita Beach</strong> (20 min), <strong>Lake Bracciano & Castle Odescalchi</strong> (30 min), a day trip to <strong>Rome</strong> (25 km), or a pizza-making class or wine & cheese tasting right on the estate.</div></div>
-        </div>
-        <div class="qa-item">
-          <button class="qa-q">When do I need to RSVP by?<svg class="qa-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="qa-a"><div class="qa-a-inner">Please use the RSVP form on this page. Final guest numbers need to be confirmed <strong>one month before the wedding</strong>. If you have any questions before RSVPing, don't hesitate to reach out to us directly.</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Photo preview -->
+  <div style="padding:5rem 0 0;"></div>
 
-  <!-- TRAVEL -->
-  <section class="travel-section" id="travel">
-    <div class="travel-inner">
-      <div class="travel-head">
-        <p class="section-label reveal" style="color:var(--gold)">Getting There</p>
-        <h2 class="section-title on-dark reveal d1">Travel</h2>
-        <div class="section-rule center reveal d2"></div>
-      </div>
-      <div class="travel-grid reveal d1">
-        <div class="travel-card">
-          <div class="travel-icon"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
-          <h3>Getting Here</h3>
-          <p>Casale Doria Pamphilj is just <strong>25 km from central Rome</strong> — 30 minutes from both Rome airports (FCO & CIA). The venue can pre-arrange minivans or coaches from the airport for groups.</p>
-        </div>
-        <div class="travel-card">
-          <div class="travel-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <h3>Stay On-Site</h3>
-          <p><strong>23 rooms + 7 apartments</strong> accommodating up to 80 guests. <strong>€75/person/night</strong> including buffet breakfast (single supplement €20/night). Kids under 12 stay free sharing parents' room.</p>
-        </div>
-        <div class="travel-card">
-          <div class="travel-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-          <h3>The Weekend</h3>
-          <p><strong>Day 1 —</strong> Arrive & Welcome BBQ at 7:30 PM<br><strong>Day 2 —</strong> The Wedding ceremony, dinner & after-party in the antique "Cantinone" cellar<br><strong>Day 3 —</strong> Relax + Farewell Pizza Party at 7:00 PM</p>
-        </div>
-        <div class="travel-card">
-          <div class="travel-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <h3>What's Included</h3>
-          <p>All three main event meals, unlimited wine, beer & prosecco during events, and daily buffet breakfast. Lunch, spirits, and extra drinks are available to purchase at the Bar Emporio.</p>
-        </div>
-        <div class="travel-card">
-          <div class="travel-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-          <h3>Budget Guidance</h3>
-          <p>Budget approx. <strong>€150–€250/person</strong> for the full weekend. This covers accommodation, transfers, a few lunches, and any extra drinks or excursions you choose.</p>
-        </div>
-        <div class="travel-card">
-          <div class="travel-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
-          <h3>Questions?</h3>
-          <p>Reach out to us or the venue directly.<br><strong>wedding@casaledoriapamphilj.it</strong><br>+39 349 15.85.427</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-bottom:4px;">
+    <div style="height:420px; background-image:url('O_E-1.jpg'); background-size:cover; background-position:center top;"></div>
+    <div style="height:420px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center top;"></div>
+    <div style="height:420px; background-image:url('O_E-32.jpg'); background-size:cover; background-position:center top;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:2fr 1fr; gap:4px; margin-bottom:4px;">
+    <div style="height:520px; background-image:url('O_E-23.jpg'); background-size:cover; background-position:center 30%;"></div>
+    <div style="height:520px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center top;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 2fr; gap:4px; margin-bottom:5rem;">
+    <div style="height:480px; background-image:url('O_E-58-2.jpg'); background-size:cover; background-position:center center;"></div>
+    <div style="height:480px; background-image:url('O_E-5.jpg'); background-size:cover; background-position:center top;"></div>
+  </div>
 
-  <!-- THINGS TO DO -->
-  <section class="todo-section" id="todo">
-    <div class="todo-inner">
-      <div class="todo-head">
-        <p class="section-label reveal">Explore Rome</p>
-        <h2 class="section-title reveal d1">Things To Do</h2>
-        <div class="section-rule center reveal d2"></div>
-      </div>
-      <div class="todo-grid reveal d1">
-        <div class="todo-card"><div class="todo-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div><h3>Singita Beach</h3><p>A classy, relaxed Mediterranean beach just <strong>20 minutes</strong> from the venue. Perfect for the morning of Day 3.</p></div>
-        <div class="todo-card"><div class="todo-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Lake Bracciano</h3><p>Historic lake town and the stunning <strong>Castle Odescalchi</strong> — only 30 minutes away. Great for a morning excursion.</p></div>
-        <div class="todo-card"><div class="todo-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h3>Rome</h3><p>The Eternal City is just <strong>25 km away</strong>. Colosseum, Vatican, Trevi Fountain, luxury shopping on Via Condotti — all easily arranged.</p></div>
-        <div class="todo-card"><div class="todo-icon"><svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></div><h3>Pizza Making Class</h3><p>Book a hands-on <strong>pizza making course</strong> or a wine & cheese tasting right on the estate (~€50/person).</p></div>
-        <div class="todo-card"><div class="todo-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>On-Site Amenities</h3><p>Outdoor pool, kids' playground, and a games room with <strong>pool table, table tennis & table football</strong> — all included.</p></div>
-        <div class="todo-card"><div class="todo-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Family Activities</h3><p><strong>Acquafelix</strong> waterpark (30 min) or <strong>Zoomarine</strong> theme park (60 min) — great for families with kids.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REGISTRY -->
-  <section class="registry-section" id="registry">
-    <div class="registry-inner">
-      <p class="section-label reveal">Gift Registry</p>
-      <h2 class="section-title reveal d1">Registry</h2>
-      <div class="section-rule center reveal d2"></div>
-      <p class="registry-coming reveal">Registry details coming soon.</p>
-    </div>
-  </section>
-
-  <!-- RSVP -->
-  <section class="rsvp-section" id="rsvp">
-    <div class="rsvp-inner">
-      <div class="rsvp-head">
-        <p class="section-label reveal" style="color:var(--gold)">April 20, 2027 · Rome, Italy</p>
-        <h2 class="section-title on-dark reveal d1">RSVP</h2>
-        <div class="section-rule center reveal d2"></div>
-      </div>
-      <form class="rsvp-form reveal d3" id="rsvpForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="first_name" placeholder="Olivia" required>
-          </div>
-          <div class="form-group">
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="last_name" placeholder="Harris" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="you@email.com" required>
-        </div>
-        <div class="form-group">
-          <label for="attending">Will you be attending?</label>
-          <select id="attending" name="attending" required>
-            <option value="" disabled selected>Select one</option>
-            <option value="yes">Joyfully accepts</option>
-            <option value="no">Regretfully declines</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="guests">Number of Guests (including yourself)</label>
-          <select id="guests" name="guests">
-            <option value="1">1 — Just me</option>
-            <option value="2">2 — Me + 1</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="notes">Dietary Restrictions / Notes</label>
-          <textarea id="notes" name="notes" placeholder="Any dietary needs or notes for us…"></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Send RSVP</button>
-        <p class="rsvp-note">Your response will be sent directly to Olivia &amp; Ethan.</p>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-monogram">O &amp; E</div>
-    <p class="footer-date">April 20, 2027 &nbsp;&middot;&nbsp; Rome, Italy</p>
-    <nav class="footer-nav">
-      <a href="#home">Home</a>
-      <a href="#photos">Photos</a>
-      <a href="#party">Wedding Party</a>
-      <a href="#qa">Q&amp;A</a>
-      <a href="#travel">Travel</a>
-      <a href="#todo">Things To Do</a>
-      <a href="#registry">Registry</a>
-      <a href="#rsvp">RSVP</a>
-    </nav>
-    <div class="footer-rule"></div>
-    <p class="footer-copy">Olivia Harris &amp; Ethan Boehm &nbsp;&middot;&nbsp; April 20, 2027</p>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 18–20, 2027 &nbsp;&middot;&nbsp; Casale Doria Pamphilj, Rome</p>
   </footer>
+</div>
 
-  <script>
-  /* NAV scroll */
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('solid', window.scrollY > 60);
-    document.getElementById('scrollCue').classList.toggle('hidden', window.scrollY > 100);
-  }, { passive: true });
+<!-- ══ PHOTOS ══ -->
+<div id="photos" class="section">
+  <div class="page-hero">
+    <h1><em>Photos</em></h1>
+    <p>Engagement — Moments by Mackenzie Lauren</p>
+  </div>
 
-  /* Mobile nav */
-  const burger = document.getElementById('burger');
-  const navLinks = document.querySelector('.nav-links');
-  burger.addEventListener('click', () => {
-    const open = navLinks.style.display === 'flex';
-    if (open) {
-      navLinks.removeAttribute('style');
-    } else {
-      Object.assign(navLinks.style, {
-        display: 'flex', flexDirection: 'column',
-        position: 'fixed', top: '68px', left: 0, right: 0,
-        background: 'rgba(28,25,23,0.97)',
-        backdropFilter: 'blur(18px)',
-        padding: '1.5rem 2rem', gap: '0.25rem',
-        borderBottom: '1px solid rgba(255,255,255,0.06)', zIndex: 899
-      });
-    }
-  });
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-top:4px;">
+    <div style="height:500px; background-image:url('O_E-1.jpg'); background-size:cover; background-position:center top;"></div>
+    <div style="height:500px; background-image:url('O_E-5.jpg'); background-size:cover; background-position:center top;"></div>
+    <div style="height:500px; background-image:url('O_E-9.jpg'); background-size:cover; background-position:center top;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 2fr; gap:4px; margin-top:4px;">
+    <div style="height:580px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center top;"></div>
+    <div style="height:580px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center 30%;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:2fr 1fr; gap:4px; margin-top:4px;">
+    <div style="height:540px; background-image:url('O_E-23.jpg'); background-size:cover; background-position:center 25%;"></div>
+    <div style="height:540px; background-image:url('O_E-32.jpg'); background-size:cover; background-position:center top;"></div>
+  </div>
+  <div style="margin-top:4px;">
+    <div style="height:480px; background-image:url('O_E-58-2.jpg'); background-size:cover; background-position:center center;"></div>
+  </div>
 
-  /* Scroll reveal */
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  <div style="text-align:center; padding:3rem 2rem; background:var(--honey);">
+    <div class="section-label" style="margin-bottom:0.5rem;">Photography</div>
+    <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; margin-bottom:0.4rem;">Moments by Mackenzie Lauren</div>
+    <div style="font-size:0.75rem; color:var(--text-muted);">momentsbymackenzielauren.pixieset.com</div>
+  </div>
 
-  /* Countdown */
-  function updateCountdown() {
-    const target = new Date('2027-04-20T00:00:00');
-    const now = new Date();
-    const diff = target - now;
-    if (diff <= 0) {
-      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '0');
-      return;
-    }
-    document.getElementById('cd-days').textContent  = Math.floor(diff / 86400000);
-    document.getElementById('cd-hours').textContent = Math.floor((diff % 86400000) / 3600000);
-    document.getElementById('cd-mins').textContent  = Math.floor((diff % 3600000) / 60000);
-    document.getElementById('cd-secs').textContent  = Math.floor((diff % 60000) / 1000);
+  <footer>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 18–20, 2027 &nbsp;&middot;&nbsp; Casale Doria Pamphilj, Rome</p>
+  </footer>
+</div>
+
+<!-- ══ THE WEEKEND ══ -->
+<div id="weekend" class="section">
+  <div class="page-hero">
+    <h1>The <em>Weekend</em></h1>
+    <p>Three days to remember — April 18–20, 2027</p>
+  </div>
+
+  <div class="weekend-wrapper">
+    <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.9; max-width:580px; margin-bottom:3rem;">We've planned a full weekend of celebration at Casale Doria Pamphilj — an extraordinary 17th-century estate in the Roman countryside. Every detail has been arranged so you can simply arrive, enjoy, and make memories.</p>
+
+    <div class="event-card">
+      <div class="event-date">Saturday<br>April 18</div>
+      <div>
+        <div class="event-time">7:30 PM &nbsp;&middot;&nbsp; Grand Doria Garden</div>
+        <div class="event-title">Welcome BBQ</div>
+        <div class="event-detail">Kick off the weekend under the stars at the Grand Doria Garden. Enjoy aperitivo, live music, and a beautiful Italian al fresco dinner as guests arrive and the celebration begins. This is your first chance to explore the grounds, meet the wedding party, and soak in the magic of the Casale.</div>
+        <div class="event-tag">Something Blue Before I Do</div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-date">Sunday<br>April 19</div>
+      <div>
+        <div class="event-time">3:00 PM Ceremony &nbsp;&middot;&nbsp; Casale Gardens</div>
+        <div class="event-title">Wedding Ceremony &amp; Reception</div>
+        <div class="event-detail">The main event. The ceremony takes place outdoors in the breathtaking gardens of Casale Doria Pamphilj, followed by cocktail hour on the terrace and a candlelit reception dinner in the Grand Hall. Dancing, toasts, and an unforgettable Italian evening await. Shuttles from central Rome will be arranged for all confirmed guests.</div>
+        <div class="event-tag">Garden Party Formal</div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-date">Monday<br>April 20</div>
+      <div>
+        <div class="event-time">7:00 PM &nbsp;&middot;&nbsp; Bar Emporio Courtyard</div>
+        <div class="event-title">Farewell Pizza Night</div>
+        <div class="event-detail">A relaxed send-off in the Bar Emporio Courtyard — wood-fired pizza, cold drinks, great company, and lingering goodbyes in the golden Italian light. The perfect ending to a perfect weekend. Come comfortable, come hungry, and come ready to reminisce.</div>
+        <div class="event-tag">Resort Casual</div>
+      </div>
+    </div>
+
+    <div style="background:var(--honey); border-left:2px solid var(--blush); padding:2rem 2.5rem; margin-top:3rem;">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; margin-bottom:0.6rem;">What's Included</div>
+      <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.85;">All wedding weekend events at Casale Doria Pamphilj — Welcome BBQ, Wedding Ceremony &amp; Reception, and Farewell Pizza Night — are fully hosted by Olivia &amp; Ethan. Shuttle transportation to and from central Rome will be arranged for all confirmed guests. On-site accommodations are available to book directly with the Casale.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 18–20, 2027 &nbsp;&middot;&nbsp; Casale Doria Pamphilj, Rome</p>
+  </footer>
+</div>
+
+<!-- ══ WEDDING PARTY ══ -->
+<div id="party" class="section">
+  <div class="page-hero">
+    <h1>Wedding <em>Party</em></h1>
+    <p>The people who've shaped our love story</p>
+  </div>
+  <div class="party-wrapper">
+
+    <div class="party-section-label">Bridesmaids</div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--oat); margin-bottom:3rem;">
+      <div style="background:var(--cream); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Maid of Honor</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Emma Harris</div>
+      </div>
+      <div style="background:var(--honey); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Bridesmaid</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Candice Copple</div>
+      </div>
+      <div style="background:var(--cream); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Bridesmaid</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Jillian Christian</div>
+      </div>
+      <div style="background:var(--honey); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Bridesmaid</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Jordan McGlinchey</div>
+      </div>
+      <div style="background:var(--honey); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Bridesmaid</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Kylie Greenwald</div>
+      </div>
+      <div style="background:var(--cream); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Bridesmaid</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Marisa Rodriguez</div>
+      </div>
+      <div style="background:var(--honey); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Bridesmaid</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Olivia Garza</div>
+      </div>
+      <div style="background:var(--cream); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Bridesmaid</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Zaira Keaton</div>
+      </div>
+    </div>
+
+    <div class="party-section-label">The Little One</div>
+    <div style="text-align:center; padding:2rem; margin-bottom:3rem;">
+      <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Flower Girl</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-style:italic;">Harley Boehm</div>
+    </div>
+
+    <div class="party-section-label">Groomsmen</div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--oat);">
+      <div style="background:var(--cream); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Best Man</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Wyatt Boehm</div>
+      </div>
+      <div style="background:var(--honey); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Groomsman</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Caleb Oneal</div>
+      </div>
+      <div style="background:var(--cream); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Groomsman</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Garret Repa</div>
+      </div>
+      <div style="background:var(--honey); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Groomsman</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Jackson Thigpen</div>
+      </div>
+      <div style="background:var(--honey); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Groomsman</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Malcolm Daniels</div>
+      </div>
+      <div style="background:var(--cream); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Groomsman</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Momen Elgamiel</div>
+      </div>
+      <div style="background:var(--honey); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Groomsman</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Owen Harris</div>
+      </div>
+      <div style="background:var(--cream); padding:2rem 1.5rem; text-align:center;">
+        <div style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem;">Groomsman</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Seth LaVergne</div>
+      </div>
+    </div>
+
+  </div>
+  <footer>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 20, 2027 &nbsp;&middot;&nbsp; Rome, Italy</p>
+  </footer>
+</div>
+
+<!-- ══ Q&A ══ -->
+<div id="qa" class="section">
+  <div class="page-hero">
+    <h1>Q <em>&amp;</em> A</h1>
+    <p>Everything you need to know</p>
+  </div>
+  <div class="qa-wrapper">
+    <div class="qa-item" onclick="toggleQA(this)">
+      <div class="qa-question">What is the dress code?<span class="qa-toggle">+</span></div>
+      <div class="qa-answer">Garden party chic — think flowing, romantic, and comfortable enough for cobblestone paths. We encourage soft florals, linen suits, and anything that makes you feel like you belong in the Italian countryside. Please avoid white, ivory, or champagne out of respect for the bride.</div>
+    </div>
+    <div class="qa-item" onclick="toggleQA(this)">
+      <div class="qa-question">What should I wear to the Welcome BBQ on April 18?<span class="qa-toggle">+</span></div>
+      <div class="qa-answer">The Welcome BBQ theme is <em>Something Blue Before I Do</em> — wear your best shade of blue! Think navy linen, dusty blue sundresses, powder blue blazers, or any hue of blue you love. It's a fun, festive way to kick off the weekend. Smart casual to cocktail attire works perfectly.</div>
+    </div>
+    <div class="qa-item" onclick="toggleQA(this)">
+      <div class="qa-question">Will the ceremony be indoors or outdoors?<span class="qa-toggle">+</span></div>
+      <div class="qa-answer">The ceremony will be held outdoors in the gardens of Casale Doria Pamphilj, a breathtaking 17th-century estate in the Roman countryside. The reception dinner will move inside to the grand hall. April in Rome is typically warm and sunny — expect highs of 65–72°F.</div>
+    </div>
+    <div class="qa-item" onclick="toggleQA(this)">
+      <div class="qa-question">Do I need a passport? Any visa info?<span class="qa-toggle">+</span></div>
+      <div class="qa-answer">Yes — make sure your passport is valid for at least 6 months beyond April 20, 2027. US citizens do not need a visa for stays under 90 days in Italy. Book flights and accommodations as early as possible. Check your government's travel advisory site for the most current entry requirements.</div>
+    </div>
+    <div class="qa-item" onclick="toggleQA(this)">
+      <div class="qa-question">Is there transportation from Rome to the venue?<span class="qa-toggle">+</span></div>
+      <div class="qa-answer">Yes! We will be organizing a shuttle from central Rome to the Casale on both April 18 (Welcome BBQ) and April 19 (Wedding Day). Details and booking info will be sent closer to the date. The Casale is approximately 22km from central Rome — about a 30-minute drive. Return shuttles run at midnight.</div>
+    </div>
+    <div class="qa-item" onclick="toggleQA(this)">
+      <div class="qa-question">Can I take photos during the ceremony?<span class="qa-toggle">+</span></div>
+      <div class="qa-answer">We're asking guests to keep the ceremony phone-free so you can be fully present in the moment — and so our photographer can capture you without screens in the way. Feel free to snap away during the cocktail hour and reception. Our hashtag is #OliviaAndEthan2027.</div>
+    </div>
+    <div class="qa-item" onclick="toggleQA(this)">
+      <div class="qa-question">When should I book flights and hotels?<span class="qa-toggle">+</span></div>
+      <div class="qa-answer">As soon as possible! Spring in Rome is peak travel season. We recommend booking by September 2026 at the latest. Check our Travel page for hotel recommendations near the venue, plus tips for extending your stay in Rome. April in Italy is magical — make a full trip of it!</div>
+    </div>
+    <div class="qa-item" onclick="toggleQA(this)">
+      <div class="qa-question">What is the RSVP deadline?<span class="qa-toggle">+</span></div>
+      <div class="qa-answer">Please RSVP by February 1st, 2027. This gives us enough time to finalize catering, seating, and logistics with the venue. Head to the RSVP page to submit your response — we can't wait to celebrate with you!</div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 20, 2027 &nbsp;&middot;&nbsp; Rome, Italy</p>
+  </footer>
+</div>
+
+<!-- ══ TRAVEL ══ -->
+<div id="travel" class="section">
+  <div class="page-hero">
+    <h1><em>Travel</em></h1>
+    <p>Everything you need to plan your Roman holiday</p>
+  </div>
+  <div class="travel-wrapper">
+    <div class="travel-note">
+      <p><strong>Important:</strong> Spring in Rome is popular — we recommend booking flights and hotels by <strong>September 2026</strong> to get the best rates. The venue is located in Fiumicino, about 22km from central Rome (~30-minute drive).</p>
+    </div>
+
+    <div class="travel-section-title">Getting <em>There</em></div>
+    <div class="travel-grid">
+      <div class="travel-card">
+        <h3>Flying In</h3>
+        <p>The closest airport is <strong>Rome Fiumicino (FCO)</strong> — Leonardo da Vinci International Airport, just 5km from the Casale. Direct flights from most major US cities are available via ITA Airways, Delta, and United.</p>
+      </div>
+      <div class="travel-card">
+        <h3>Shuttle Service</h3>
+        <p>We will arrange a <strong>private shuttle</strong> from central Rome on both April 18 (Welcome BBQ) and April 19 (Wedding Day). Booking details will be sent to all confirmed guests. Return shuttles run at midnight.</p>
+      </div>
+      <div class="travel-card">
+        <h3>By Car / Taxi</h3>
+        <p>Taxis and rideshares (FREE NOW, Uber) are readily available from Rome. The drive from central Rome is approximately <strong>30–40 minutes</strong>. Casale address: Via Onorato Occioni, 12, 00054 Fiumicino.</p>
+      </div>
+      <div class="travel-card">
+        <h3>Train + Transfer</h3>
+        <p>The <strong>Leonardo Express</strong> runs between Roma Termini and Fiumicino Airport (&euro;14, 32 min). From Fiumicino, a short taxi to the Casale is the easiest option. Scenic and straightforward.</p>
+      </div>
+    </div>
+
+    <div class="travel-section-title">Where to <em>Stay</em></div>
+    <div class="travel-grid">
+      <div class="travel-card">
+        <h3>At the Casale</h3>
+        <p>Casale Doria Pamphilj has <strong>25 independent apartments</strong> on site — the best option for the full experience. Book directly at <a href="https://www.casaledoriapamphilj.it" target="_blank">casaledoriapamphilj.it</a>. Mention Olivia &amp; Ethan's wedding when booking!</p>
+      </div>
+      <div class="travel-card">
+        <h3>In Fiumicino</h3>
+        <p>Several hotels are within 10 minutes of the venue. We recommend the <strong>Hilton Rome Airport</strong> or <strong>NH Hotel Rome Airport</strong> for convenience, or explore charming B&amp;Bs in the Fiumicino town center.</p>
+      </div>
+      <div class="travel-card">
+        <h3>In Central Rome</h3>
+        <p>If you'd like to base yourself in Rome and use our shuttle, we love the <strong>Trastevere</strong> and <strong>Campo de' Fiori</strong> neighborhoods — charming, walkable, and full of incredible food and history.</p>
+      </div>
+      <div class="travel-card">
+        <h3>Extend Your Trip</h3>
+        <p>Rome deserves more than a weekend! We highly encourage you to arrive early or stay after. Head to our <strong>Things to Do</strong> page for our personal recommendations around the city and beyond.</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 20, 2027 &nbsp;&middot;&nbsp; Rome, Italy</p>
+  </footer>
+</div>
+
+<!-- ══ THINGS TO DO ══ -->
+<div id="todo" class="section">
+  <div class="page-hero">
+    <h1>Things <em>to Do</em></h1>
+    <p>Our personal guide to Rome &amp; beyond</p>
+  </div>
+  <div class="todo-wrapper">
+    <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.9; max-width:600px; margin-bottom:1rem;">Rome is a city that rewards the wanderer. These are our favorite spots — the places we've fallen in love with on our own trips. We hope you fall for them too.</p>
+
+    <div class="todo-grid">
+      <div class="todo-card">
+        <div class="todo-tag">Must-See</div>
+        <h3>The Colosseum</h3>
+        <p>Book tickets in advance — the line without a booking can be hours. Spring light makes the stone glow golden. Go at opening time for the best experience.</p>
+      </div>
+      <div class="todo-card">
+        <div class="todo-tag">Must-See</div>
+        <h3>Trastevere</h3>
+        <p>Our favorite neighborhood. Cobblestone streets, ivy-covered buildings, and the best aperitivo bars in the city. Perfect for an evening wander and dinner.</p>
+      </div>
+      <div class="todo-card">
+        <div class="todo-tag">Art &amp; Culture</div>
+        <h3>Borghese Gallery</h3>
+        <p>Book well in advance — entry is strictly timed. Bernini's sculptures are among the most breathtaking things you'll ever see in person. Allow two hours minimum.</p>
+      </div>
+      <div class="todo-card">
+        <div class="todo-tag">Food &amp; Drink</div>
+        <h3>Roscioli</h3>
+        <p>The best cacio e pepe in Rome, full stop. Also a wine bar and deli. Make a reservation — it books up weeks ahead. Worth every bit of the wait.</p>
+      </div>
+      <div class="todo-card">
+        <div class="todo-tag">Food &amp; Drink</div>
+        <h3>Gelato at Fatamorgana</h3>
+        <p>Artisanal gelato with unusual flavors like basil, ginger, and pink pepper. Multiple locations across Rome — don't skip this one.</p>
+      </div>
+      <div class="todo-card">
+        <div class="todo-tag">Food &amp; Drink</div>
+        <h3>Campo de' Fiori Market</h3>
+        <p>Every morning there's a lively market — grab fresh fruit, local produce, and flowers. Then settle into one of the surrounding bars for a proper espresso.</p>
+      </div>
+      <div class="todo-card">
+        <div class="todo-tag">Day Trip</div>
+        <h3>Ostia Antica</h3>
+        <p>An ancient Roman port city just 30 minutes from Rome — and far less crowded than Pompeii. Incredibly preserved with stunning mosaics and open-air ruins.</p>
+      </div>
+      <div class="todo-card">
+        <div class="todo-tag">Day Trip</div>
+        <h3>Frascati Wine Region</h3>
+        <p>30 minutes from Rome in the Castelli Romani hills. Rolling vineyards, panoramic views, and the local white wine is delightful. Perfect for a half-day escape.</p>
+      </div>
+      <div class="todo-card">
+        <div class="todo-tag">Hidden Gem</div>
+        <h3>Aventine Keyhole</h3>
+        <p>Peek through the Knights of Malta keyhole for a perfectly framed view of St. Peter's Dome. Free, quick, and utterly magical. Don't miss it.</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 20, 2027 &nbsp;&middot;&nbsp; Rome, Italy</p>
+  </footer>
+</div>
+
+<!-- ══ REGISTRY ══ -->
+<div id="registry" class="section">
+  <div class="page-hero">
+    <h1><em>Registry</em></h1>
+    <p>Every gift is a treasure — thank you for celebrating with us</p>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter by:</span>
+    <button class="filter-btn active" onclick="filterRegistry('all', this)">All</button>
+    <button class="filter-btn" onclick="filterRegistry('kitchen', this)">Kitchen</button>
+    <button class="filter-btn" onclick="filterRegistry('home', this)">Home</button>
+    <button class="filter-btn" onclick="filterRegistry('experience', this)">Experiences</button>
+    <button class="filter-btn" onclick="filterRegistry('available', this)">Still Available</button>
+  </div>
+
+  <div class="registry-grid" id="registry-grid" style="margin:2rem 3rem 4rem;"></div>
+
+  <footer>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 20, 2027 &nbsp;&middot;&nbsp; Rome, Italy</p>
+  </footer>
+</div>
+
+<!-- ══ RSVP ══ -->
+<div id="rsvp" class="section">
+  <div class="page-hero">
+    <h1><em>RSVP</em></h1>
+    <p>Kindly respond by February 1, 2027</p>
+  </div>
+  <div class="rsvp-wrapper">
+    <div id="rsvp-form-container">
+      <h2>Will you be <em>joining us?</em></h2>
+      <p class="rsvp-intro">We are so excited to celebrate with you in Rome. Please fill out the form below for each guest in your party. Kindly reply by February 1st, 2027.</p>
+
+      <div class="form-group">
+        <label class="form-label">Your Full Name</label>
+        <input type="text" class="form-input" id="rsvp-name" placeholder="First &amp; Last Name">
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" id="rsvp-email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Number of Guests</label>
+          <select class="form-select" id="rsvp-guests">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Will You Attend?</label>
+        <div class="radio-group">
+          <label class="radio-label" id="lbl-yes" onclick="selectAttend('yes')">
+            <input type="radio" name="attend" value="yes"> Joyfully Accepts
+          </label>
+          <label class="radio-label" id="lbl-no" onclick="selectAttend('no')">
+            <input type="radio" name="attend" value="no"> Regretfully Declines
+          </label>
+        </div>
+      </div>
+
+      <div id="attend-yes-fields">
+        <div class="form-group">
+          <label class="form-label">Dietary Restrictions</label>
+          <input type="text" class="form-input" id="rsvp-diet" placeholder="Vegetarian, gluten-free, allergies, etc.">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Will You Attend the Welcome BBQ? (April 18)</label>
+          <div class="radio-group">
+            <label class="radio-label" id="lbl-w-yes" onclick="selectWelcome('yes')">Yes, I'll be there!</label>
+            <label class="radio-label" id="lbl-w-no" onclick="selectWelcome('no')">Unable to make it</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Song Request</label>
+          <input type="text" class="form-input" id="rsvp-song" placeholder="What song will get you on the dance floor?">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Message to Olivia &amp; Ethan</label>
+        <textarea class="form-textarea" id="rsvp-message" placeholder="Share a note, a memory, or your excitement..."></textarea>
+      </div>
+      <button class="btn btn-sage" style="width:100%; padding:1rem;" onclick="submitRSVP()">Send Your RSVP</button>
+    </div>
+
+    <div class="rsvp-success" id="rsvp-success">
+      <h3>We'll see you <em>in Rome!</em></h3>
+      <p id="rsvp-success-msg">Thank you for your RSVP. We can't wait to celebrate with you in the Italian countryside.</p>
+      <button class="btn btn-outline" style="margin-top:2rem;" onclick="showSection('travel')">Plan Your Trip &rarr;</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-names">Olivia &amp; Ethan</div>
+    <p>April 20, 2027 &nbsp;&middot;&nbsp; Rome, Italy</p>
+  </footer>
+</div>
+
+<script>
+// ── REGISTRY ──
+const registryItems = [
+  { id:1, name:'Le Creuset Dutch Oven', store:'Williams Sonoma', price:'$420', category:'kitchen', claimed:false, url:'https://www.williams-sonoma.com', img:'https://images.unsplash.com/photo-1585515320310-259814833e62?w=400&q=80' },
+  { id:2, name:'Staub Cast Iron Skillet', store:'Williams Sonoma', price:'$199', category:'kitchen', claimed:true, url:'https://www.williams-sonoma.com', img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80' },
+  { id:3, name:'KitchenAid Stand Mixer', store:'Crate & Barrel', price:'$499', category:'kitchen', claimed:false, url:'https://www.crateandbarrel.com', img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80' },
+  { id:4, name:'Parachute Linen Duvet Set', store:'Parachute', price:'$349', category:'home', claimed:false, url:'https://www.parachutehome.com', img:'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&q=80' },
+  { id:5, name:'Anthropologie Rug 8x10', store:'Anthropologie', price:'$698', category:'home', claimed:true, url:'https://www.anthropologie.com', img:'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=400&q=80' },
+  { id:6, name:'Rome Cooking Class for Two', store:'Airbnb Experiences', price:'$180', category:'experience', claimed:false, url:'https://www.airbnb.com/experiences', img:'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&q=80' },
+  { id:7, name:'Amalfi Coast Day Trip', store:'Viator', price:'$220', category:'experience', claimed:false, url:'https://www.viator.com', img:'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=400&q=80' },
+  { id:8, name:'Wine & Cheese Tasting', store:'Airbnb Experiences', price:'$95', category:'experience', claimed:true, url:'https://www.airbnb.com/experiences', img:'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&q=80' },
+  { id:9, name:'Marble Cheese Board Set', store:'Crate & Barrel', price:'$89', category:'kitchen', claimed:false, url:'https://www.crateandbarrel.com', img:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=400&q=80' },
+  { id:10, name:'Linen Table Runner Set', store:'West Elm', price:'$78', category:'home', claimed:false, url:'https://www.westelm.com', img:'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=400&q=80' },
+  { id:11, name:'Espresso Machine Delonghi', store:'Williams Sonoma', price:'$599', category:'kitchen', claimed:true, url:'https://www.williams-sonoma.com', img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80' },
+  { id:12, name:'Honeymoon Fund Contribution', store:'Zola', price:'Any amount', category:'experience', claimed:false, url:'https://www.zola.com', img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80' },
+];
+
+let claimedItems = JSON.parse(localStorage.getItem('oe_registry_claimed') || '[]');
+let currentFilter = 'all';
+
+function renderRegistry(filter) {
+  const grid = document.getElementById('registry-grid');
+  let items = registryItems;
+  if (filter === 'available') items = items.filter(i => !claimedItems.includes(i.id) && !i.claimed);
+  else if (filter !== 'all') items = items.filter(i => i.category === filter);
+
+  grid.innerHTML = items.map(item => {
+    const isClaimed = item.claimed || claimedItems.includes(item.id);
+    return `<div class="registry-item ${isClaimed ? 'claimed' : ''}" data-category="${item.category}">
+      ${isClaimed ? '<div class="claimed-badge">Gifted</div>' : ''}
+      <div class="item-category">${item.category}</div>
+      <div class="item-img" style="background-image:url('${item.img}');"></div>
+      <div class="item-name">${item.name}</div>
+      <div class="item-store">${item.store}</div>
+      <div class="item-price">${item.price}</div>
+      ${isClaimed
+        ? '<button class="btn btn-outline disabled" disabled>Already Gifted</button>'
+        : `<a href="${item.url}" target="_blank" class="btn btn-sage" onclick="markClaimed(${item.id})">Purchase Gift &rarr;</a>`}
+    </div>`;
+  }).join('');
+}
+
+function markClaimed(id) {
+  if (!claimedItems.includes(id)) {
+    claimedItems.push(id);
+    localStorage.setItem('oe_registry_claimed', JSON.stringify(claimedItems));
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  setTimeout(() => renderRegistry(currentFilter), 600);
+}
 
-  /* Lightbox */
-  (function () {
-    const items = Array.from(document.querySelectorAll('#galleryGrid .g-item'));
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbCount = document.getElementById('lbCounter');
-    let cur = 0;
+function filterRegistry(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRegistry(filter);
+}
 
-    function open(i) {
-      cur = i;
-      lbImg.src = items[i].dataset.src;
-      lbCount.textContent = (i + 1) + ' / ' + items.length;
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
+renderRegistry('all');
 
-    items.forEach((item, i) => item.addEventListener('click', () => open(i)));
-    document.getElementById('lbClose').addEventListener('click', close);
-    document.getElementById('lbPrev').addEventListener('click', () => open((cur - 1 + items.length) % items.length));
-    document.getElementById('lbNext').addEventListener('click', () => open((cur + 1) % items.length));
-    lb.addEventListener('click', e => { if (e.target === lb) close(); });
-    document.addEventListener('keydown', e => {
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
-      if (e.key === 'ArrowRight') document.getElementById('lbNext').click();
-    });
-  })();
+// ── RSVP ──
+let attendVal = '', welcomeVal = '';
 
-  /* RSVP form */
-  document.querySelectorAll('.qa-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.qa-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
-  });
+function selectAttend(val) {
+  attendVal = val;
+  document.getElementById('lbl-yes').classList.toggle('selected', val === 'yes');
+  document.getElementById('lbl-no').classList.toggle('selected', val === 'no');
+  document.getElementById('attend-yes-fields').style.display = val === 'yes' ? 'block' : 'none';
+}
 
-  document.getElementById('rsvpForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const btn = this.querySelector('.btn-submit');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-    try {
-      const res = await fetch(this.action, {
-        method: 'POST', body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        this.innerHTML = '<p style="text-align:center;font-family:\'Cormorant Garamond\',serif;font-size:1.5rem;font-style:italic;color:var(--gold-lt);padding:2rem 0">Thank you! We can\'t wait to celebrate with you.</p>';
-      } else {
-        btn.textContent = 'Try Again';
-        btn.disabled = false;
-      }
-    } catch {
-      btn.textContent = 'Try Again';
-      btn.disabled = false;
-    }
-  });
-  </script>
+function selectWelcome(val) {
+  welcomeVal = val;
+  document.getElementById('lbl-w-yes').classList.toggle('selected', val === 'yes');
+  document.getElementById('lbl-w-no').classList.toggle('selected', val === 'no');
+}
+
+document.getElementById('attend-yes-fields').style.display = 'none';
+
+function submitRSVP() {
+  const name = document.getElementById('rsvp-name').value.trim();
+  const email = document.getElementById('rsvp-email').value.trim();
+  if (!name || !email || !attendVal) {
+    alert('Please fill in your name, email, and attendance selection.');
+    return;
+  }
+  const msg = attendVal === 'yes'
+    ? `Thank you, ${name}! We're thrilled you'll be joining us in Rome. Expect more details closer to the date.`
+    : `Thank you for letting us know, ${name}. We'll miss you and hope to celebrate together soon!`;
+  document.getElementById('rsvp-success-msg').textContent = msg;
+  document.getElementById('rsvp-form-container').style.display = 'none';
+  document.getElementById('rsvp-success').style.display = 'block';
+}
+
+// ── Q&A ──
+function toggleQA(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.qa-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+// ── NAV ──
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+function navTo(id) {
+  showSection(id);
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ── COUNTDOWN ──
+function updateCountdown() {
+  const target = new Date('2027-04-19T15:00:00+02:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '0');
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = d;
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
