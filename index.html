@@ -380,10 +380,13 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
   .nav-hamburger { display: flex; }
   .hero-right-grid { display: none; }
   .hero-split { grid-template-columns: 1fr !important; }
-  .hero-left { padding: 3.5rem 1.5rem; min-height: calc(100vh - 60px); }
+  .hero-left { padding: 3.5rem 2rem; min-height: calc(100vh - 60px); text-align: center; align-items: center; }
+  .hero-divider { margin: 0 auto 1.8rem; }
+  .hero-names em { display: inline; }
   .hero-names { font-size: clamp(3rem, 12vw, 4rem); }
-  .countdown-bar { gap: 1.5rem; padding: 2rem 1rem; }
-  .countdown-num { font-size: 2.2rem; }
+  .countdown-bar { gap: 1.2rem; padding: 1.5rem 1rem; }
+  .countdown-num { font-size: 3rem; }
+  .countdown-label { font-size: 0.6rem; margin-top: 0.2rem; }
   #home > div[style*="grid-template-columns:repeat(3,1fr)"],
   #home > div[style*="grid-template-columns:2fr 1fr"],
   #home > div[style*="grid-template-columns:1fr 2fr"] {
@@ -427,10 +430,10 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
 <body>
 
 <nav>
-  <div class="nav-logo" onclick="showSection('home')" style="cursor:pointer;">
-    <span style="font-style:normal; letter-spacing:0.08em; color:var(--dark); opacity:0.5; font-size:0.7rem;">✦</span>
-    &nbsp;Olivia &amp; Ethan&nbsp;
-    <span style="font-style:normal; letter-spacing:0.08em; color:var(--dark); opacity:0.5; font-size:0.7rem;">✦</span>
+  <div class="nav-logo" onclick="showSection('home')" style="cursor:pointer; display:flex; align-items:center; gap:0.5rem;">
+    <span style="width:18px; height:0.5px; background:var(--sage); display:inline-block;"></span>
+    <span style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; letter-spacing:0.12em; color:var(--sage);">O &amp; E</span>
+    <span style="width:18px; height:0.5px; background:var(--sage); display:inline-block;"></span>
   </div>
   <div class="nav-links">
     <a onclick="showSection('home')">Home</a>
@@ -478,9 +481,8 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
         <button class="btn btn-outline" onclick="showSection('registry')">Registry</button>
       </div>
     </div>
-    <div class="hero-right-grid" style="display:grid; grid-template-rows:58% 42%; grid-template-columns:1fr 1fr;">
-      <div class="hero-img" style="grid-column:1/3; background-image:url('O_E-9.jpg'); background-position:center top;"></div>
-      <div class="hero-img" style="background-image:url('O_E-5.jpg'); background-position:center top;"></div>
+    <div class="hero-right-grid" style="display:grid; grid-template-rows:58% 42%; grid-template-columns:1fr;">
+      <div class="hero-img" style="background-image:url('O_E-9.jpg'); background-position:center center;"></div>
       <div class="hero-img" style="background-image:url('O_E-58-2.jpg'); background-position:center center;"></div>
     </div>
   </div>
@@ -516,12 +518,12 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
   <div style="padding:5rem 0 0;"></div>
 
   <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-bottom:4px;">
-    <div style="height:420px; background-image:url('O_E-1.jpg'); background-size:cover; background-position:center top;"></div>
-    <div style="height:420px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center top;"></div>
-    <div style="height:420px; background-image:url('O_E-32.jpg'); background-size:cover; background-position:center top;"></div>
+    <div style="height:420px; background-image:url('O_E-1.jpg'); background-size:cover; background-position:center 40%;"></div>
+    <div style="height:420px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center 65%;"></div>
+    <div style="height:420px; background-image:url('O_E-32.jpg'); background-size:cover; background-position:center 40%;"></div>
   </div>
   <div style="display:grid; grid-template-columns:2fr 1fr; gap:4px; margin-bottom:4px;">
-    <div style="height:520px; background-image:url('O_E-23.jpg'); background-size:cover; background-position:center 30%;"></div>
+    <div style="height:520px; background-image:url('O_E-23.jpg'); background-size:cover; background-position:center 55%;"></div>
     <div style="height:520px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center top;"></div>
   </div>
   <div style="display:grid; grid-template-columns:1fr 2fr; gap:4px; margin-bottom:5rem;">
@@ -542,18 +544,17 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
     <p>Engagement — Moments by Mackenzie Lauren</p>
   </div>
 
-  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-top:4px;">
-    <div style="height:500px; background-image:url('O_E-1.jpg'); background-size:cover; background-position:center top;"></div>
-    <div style="height:500px; background-image:url('O_E-5.jpg'); background-size:cover; background-position:center top;"></div>
-    <div style="height:500px; background-image:url('O_E-9.jpg'); background-size:cover; background-position:center top;"></div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:4px;">
+    <div style="height:500px; background-image:url('O_E-1.jpg'); background-size:cover; background-position:center 40%;"></div>
+    <div style="height:500px; background-image:url('O_E-9.jpg'); background-size:cover; background-position:center center;"></div>
   </div>
   <div style="display:grid; grid-template-columns:1fr 2fr; gap:4px; margin-top:4px;">
-    <div style="height:580px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center top;"></div>
-    <div style="height:580px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center 30%;"></div>
+    <div style="height:580px; background-image:url('O_E-51.jpg'); background-size:cover; background-position:center 60%;"></div>
+    <div style="height:580px; background-image:url('O_E-21.jpg'); background-size:cover; background-position:center 55%;"></div>
   </div>
   <div style="display:grid; grid-template-columns:2fr 1fr; gap:4px; margin-top:4px;">
-    <div style="height:540px; background-image:url('O_E-23.jpg'); background-size:cover; background-position:center 25%;"></div>
-    <div style="height:540px; background-image:url('O_E-32.jpg'); background-size:cover; background-position:center top;"></div>
+    <div style="height:540px; background-image:url('O_E-23.jpg'); background-size:cover; background-position:center 55%;"></div>
+    <div style="height:540px; background-image:url('O_E-32.jpg'); background-size:cover; background-position:center 50%;"></div>
   </div>
   <div style="margin-top:4px;">
     <div style="height:480px; background-image:url('O_E-58-2.jpg'); background-size:cover; background-position:center center;"></div>
