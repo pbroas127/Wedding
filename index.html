@@ -959,9 +959,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
       <div class="form-group">
         <label class="form-label">Number of Guests</label>
         <select class="form-select" id="rsvp-guests" onchange="updateGuestFields()">
-          <option>1</option><option>2</option><option>3</option><option>4</option>
-          <option>5</option><option>6</option><option>7</option><option>8</option>
-          <option>9</option><option>10</option>
+          <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
         </select>
       </div>
 
@@ -1108,18 +1106,33 @@ async function submitRSVP() {
 
   const now = new Date();
   const submitted = now.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
-    + ' at ' + now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
+    + ' ' + now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
+
+  // Build guest 1 cell: "Name" or "Name, Dietary"
+  const g1cell = isAttending && diet1 !== 'None' ? `${name}, ${diet1}` : name;
+
+  // Build guest 2-5 cells
+  const guestCells = {};
+  for (let i = 2; i <= 5; i++) {
+    if (i <= guestCount) {
+      const gName = document.getElementById(`rsvp-guest-${i}`) ? document.getElementById(`rsvp-guest-${i}`).value.trim() || 'Not provided' : 'Not provided';
+      const dietChecked = isAttending && document.getElementById(`diet-check-${i}`) && document.getElementById(`diet-check-${i}`).checked;
+      const dietEl = document.getElementById(`rsvp-diet-${i}`);
+      const gDiet = dietChecked ? (dietEl && dietEl.value.trim() || 'Unspecified') : null;
+      guestCells[`${i}`] = gDiet ? `${gName}, ${gDiet}` : gName;
+    } else {
+      guestCells[`${i}`] = '';
+    }
+  }
 
   const data = {
-    'Submitted': submitted,
-    'Full Name': name,
+    'Date': submitted,
+    'Attendance': isAttending ? 'Joyfully Accepts' : 'Regretfully Declines',
     'Email': email,
-    'Attending': isAttending ? 'Joyfully Accepts' : 'Regretfully Declines',
-    'Total Guests': guestCount,
-    'Guest 1 Dietary': isAttending ? diet1 : 'N/A',
-    ...guestData,
-    'Welcome BBQ (Apr 18)': isAttending ? (welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'No response') : 'N/A',
-    'Message': document.getElementById('rsvp-message').value.trim() || ''
+    '1': g1cell,
+    ...guestCells,
+    'BBQ Attendance': isAttending ? (welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'No response') : 'N/A',
+    'Note': document.getElementById('rsvp-message').value.trim() || ''
   };
 
   try {
