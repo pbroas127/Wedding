@@ -383,10 +383,25 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
   .hero-left { padding: 3.5rem 2rem; min-height: calc(100vh - 60px); text-align: center; align-items: center; }
   .hero-divider { margin: 0 auto 1.8rem; }
   .hero-names em { display: inline; }
-  .hero-names { font-size: clamp(3rem, 12vw, 4rem); }
+  .hero-names { font-size: clamp(3.8rem, 14vw, 5rem); }
+  .hero-eyebrow { font-size: 0.75rem; }
+  .hero-date-line { font-size: 0.82rem; }
+  .hero-venue { font-size: 1.3rem; }
+  .hero-venue-sub { font-size: 0.82rem; }
+  .btn { font-size: 0.72rem; padding: 0.8rem 1.8rem; }
   .countdown-bar { gap: 1.2rem; padding: 1.5rem 1rem; }
-  .countdown-num { font-size: 3rem; }
-  .countdown-label { font-size: 0.6rem; margin-top: 0.2rem; }
+  .countdown-num { font-size: 3.5rem; }
+  .countdown-label { font-size: 0.72rem; margin-top: 0.3rem; }
+  .section-label { font-size: 0.78rem; }
+  .page-hero p { font-size: 0.78rem; }
+  .event-time { font-size: 0.75rem; }
+  .event-title { font-size: 2rem; }
+  .event-detail { font-size: 0.95rem; }
+  .event-tag { font-size: 0.68rem; }
+  .party-section-label { font-size: 0.78rem; }
+  #party div[style*="font-size:0.55rem"] { font-size: 0.7rem !important; }
+  #party div[style*="font-size:1.2rem"] { font-size: 1.4rem !important; }
+  #party div[style*="font-size:1.5rem"] { font-size: 1.8rem !important; }
   #home > div[style*="grid-template-columns:repeat(3,1fr)"],
   #home > div[style*="grid-template-columns:2fr 1fr"],
   #home > div[style*="grid-template-columns:1fr 2fr"] {
@@ -415,9 +430,9 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
   .filter-bar { padding: 1.5rem 1rem 0; gap: 0.5rem; }
   #home > div[style*="padding:4rem 2rem"] { padding: 2rem 1.2rem !important; gap: 0 !important; }
   #home > div[style*="padding:4rem 2rem"] > div { padding: 1.2rem 1rem !important; border: none !important; }
-  #home > div[style*="padding:4rem 2rem"] .section-label { font-size: 0.65rem; margin-bottom: 0.5rem; }
-  #home > div[style*="padding:4rem 2rem"] div[style*="font-size:1.3rem"] { font-size: 1.5rem; }
-  #home > div[style*="padding:4rem 2rem"] div[style*="font-size:0.75rem"] { font-size: 0.8rem; line-height: 1.6; }
+  #home > div[style*="padding:4rem 2rem"] .section-label { font-size: 0.78rem; margin-bottom: 0.5rem; }
+  #home > div[style*="padding:4rem 2rem"] div[style*="font-size:1.3rem"] { font-size: 1.8rem !important; }
+  #home > div[style*="padding:4rem 2rem"] div[style*="font-size:0.75rem"] { font-size: 0.9rem !important; line-height: 1.7; }
   .filter-btn { font-size: 0.55rem; padding: 0.4rem 0.8rem; }
   .party-wrapper { padding: 3rem 1rem; }
   div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
@@ -892,16 +907,16 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
 
   <!-- Registry photos -->
   <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-top:3rem;">
-    <div style="height:480px; background-image:url('reg1.jpg'); background-size:cover; background-position:center;"></div>
-    <div style="height:480px; background-image:url('reg2.jpg'); background-size:cover; background-position:center;"></div>
-    <div style="height:480px; background-image:url('reg3.jpg'); background-size:cover; background-position:center;"></div>
+    <div style="height:280px; background-image:url('reg1.jpg'); background-size:cover; background-position:center;"></div>
+    <div style="height:280px; background-image:url('reg2.jpg'); background-size:cover; background-position:center;"></div>
+    <div style="height:280px; background-image:url('reg3.jpg'); background-size:cover; background-position:center;"></div>
   </div>
 
   <!-- CTA -->
-  <div style="text-align:center; padding:4rem 2rem 5rem;">
-    <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:300; margin-bottom:0.8rem;">Help us build our home</div>
-    <p style="font-size:0.82rem; color:var(--text-muted); max-width:440px; margin:0 auto 2.5rem; line-height:1.8;">Every gift means the world to us. Browse our registry and find something that speaks to you.</p>
-    <a href="https://www.myregistry.com/wedding-registry/olivia-harris-and-ethan-boehm-mckinney-tx/5437685/giftlist" target="_blank" class="btn btn-sage" style="padding:1.1rem 3.5rem; font-size:0.7rem; letter-spacing:0.3em;">View Registry &rarr;</a>
+  <div style="text-align:center; padding:5rem 2rem 6rem;">
+    <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,5vw,4.5rem); font-weight:300; margin-bottom:1.2rem; line-height:1.1;">Help us build our <em style="font-style:italic; color:var(--sage);">home</em></div>
+    <p style="font-size:1rem; color:var(--text-muted); max-width:480px; margin:0 auto 3rem; line-height:1.9;">Every gift means the world to us. Browse our registry and find something that speaks to you.</p>
+    <a href="https://www.myregistry.com/wedding-registry/olivia-harris-and-ethan-boehm-mckinney-tx/5437685/giftlist" target="_blank" class="btn btn-sage" style="padding:1.2rem 4rem; font-size:0.75rem; letter-spacing:0.3em;">View Registry &rarr;</a>
   </div>
 
   <footer>
