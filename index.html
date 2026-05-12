@@ -424,6 +424,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
   .todo-grid { grid-template-columns: 1fr 1fr; }
   .travel-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
+  .weekend-intro { text-align: center; max-width: 100% !important; }
   .event-card { grid-template-columns: 1fr; gap: 0.5rem; text-align: center; }
   .event-detail { max-width: 100%; }
   .event-tag { display: block; }
@@ -603,7 +604,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
   </div>
 
   <div class="weekend-wrapper">
-    <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.9; max-width:580px; margin-bottom:3rem;">We've planned a full weekend of celebration at Casale Doria Pamphilj — an extraordinary 17th-century estate in the Roman countryside. Every detail has been arranged so you can simply arrive, enjoy, and make memories.</p>
+    <p class="weekend-intro" style="font-size:0.85rem; color:var(--text-muted); line-height:1.9; max-width:580px; margin-bottom:3rem;">We've planned a full weekend of celebration at Casale Doria Pamphilj, an extraordinary 17th century estate in the Roman countryside. Every detail has been arranged so you can simply arrive, enjoy, and make memories.</p>
 
     <div class="event-card">
       <div class="event-date">Saturday<span class="date-sep"> &middot; </span><br class="date-br">April 18</div>
@@ -761,7 +762,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
     </div>
     <div class="qa-item" onclick="toggleQA(this)">
       <div class="qa-question">Do I need a passport? Any visa info?<span class="qa-toggle">+</span></div>
-      <div class="qa-answer">Yes — make sure your passport is valid for at least 6 months beyond April 20, 2027. US citizens do not need a visa for stays under 90 days in Italy. Book flights and accommodations as early as possible. Check your government's travel advisory site for the most current entry requirements.</div>
+      <div class="qa-answer">Yes, make sure your passport is valid for at least 6 months beyond April 20, 2027. US citizens do not need a visa for stays under 90 days in Italy. Book flights and accommodations as early as possible. Check your government's travel advisory site for the most current entry requirements.</div>
     </div>
     <div class="qa-item" onclick="toggleQA(this)">
       <div class="qa-question">How do I get to the Casale from the airport?<span class="qa-toggle">+</span></div>
@@ -777,7 +778,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
     </div>
     <div class="qa-item" onclick="toggleQA(this)">
       <div class="qa-question">What is the RSVP deadline?<span class="qa-toggle">+</span></div>
-      <div class="qa-answer">Please RSVP by February 1st, 2027. This gives us enough time to finalize catering, seating, and logistics with the venue. Head to the RSVP page to submit your response — we can't wait to celebrate with you!</div>
+      <div class="qa-answer">Please RSVP by February 1st, 2027. This gives us enough time to finalize catering, seating, and logistics with the venue. Head to the RSVP page to submit your response. We can't wait to celebrate with you!</div>
     </div>
   </div>
   <footer>
@@ -842,13 +843,13 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
     <p>Our personal guide to Rome &amp; beyond</p>
   </div>
   <div class="todo-wrapper">
-    <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.9; max-width:600px; margin-bottom:1rem;">Rome is a city that rewards the wanderer. These are our favorite spots — the places we've fallen in love with on our own trips. We hope you fall for them too.</p>
+    <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.9; max-width:600px; margin-bottom:1rem;">Rome is a city that rewards the wanderer. These are our favorite spots, the places we've fallen in love with on our own trips. We hope you fall for them too.</p>
 
     <div class="todo-grid">
       <div class="todo-card">
         <div class="todo-tag">Must-See</div>
         <h3>The Colosseum</h3>
-        <p>Book tickets in advance — the line without a booking can be hours. Spring light makes the stone glow golden. Go at opening time for the best experience.</p>
+        <p>Book tickets in advance. The line without a booking can be hours. Spring light makes the stone glow golden. Go at opening time for the best experience.</p>
       </div>
       <div class="todo-card">
         <div class="todo-tag">Must-See</div>
@@ -858,27 +859,27 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
       <div class="todo-card">
         <div class="todo-tag">Art &amp; Culture</div>
         <h3>Borghese Gallery</h3>
-        <p>Book well in advance — entry is strictly timed. Bernini's sculptures are among the most breathtaking things you'll ever see in person. Allow two hours minimum.</p>
+        <p>Book well in advance. Entry is strictly timed. Bernini's sculptures are among the most breathtaking things you'll ever see in person. Allow two hours minimum.</p>
       </div>
       <div class="todo-card">
         <div class="todo-tag">Food &amp; Drink</div>
         <h3>Roscioli</h3>
-        <p>The best cacio e pepe in Rome, full stop. Also a wine bar and deli. Make a reservation — it books up weeks ahead. Worth every bit of the wait.</p>
+        <p>The best cacio e pepe in Rome, full stop. Also a wine bar and deli. Make a reservation. It books up weeks ahead. Worth every bit of the wait.</p>
       </div>
       <div class="todo-card">
         <div class="todo-tag">Food &amp; Drink</div>
         <h3>Gelato at Fatamorgana</h3>
-        <p>Artisanal gelato with unusual flavors like basil, ginger, and pink pepper. Multiple locations across Rome — don't skip this one.</p>
+        <p>Artisanal gelato with unusual flavors like basil, ginger, and pink pepper. Multiple locations across Rome. Don't skip this one.</p>
       </div>
       <div class="todo-card">
         <div class="todo-tag">Food &amp; Drink</div>
         <h3>Campo de' Fiori Market</h3>
-        <p>Every morning there's a lively market — grab fresh fruit, local produce, and flowers. Then settle into one of the surrounding bars for a proper espresso.</p>
+        <p>Every morning there's a lively market. Grab fresh fruit, local produce, and flowers. Then settle into one of the surrounding bars for a proper espresso.</p>
       </div>
       <div class="todo-card">
         <div class="todo-tag">Day Trip</div>
         <h3>Ostia Antica</h3>
-        <p>An ancient Roman port city just 30 minutes from Rome — and far less crowded than Pompeii. Incredibly preserved with stunning mosaics and open-air ruins.</p>
+        <p>An ancient Roman port city just 30 minutes from Rome, and far less crowded than Pompeii. Incredibly preserved with stunning mosaics and open-air ruins.</p>
       </div>
       <div class="todo-card">
         <div class="todo-tag">Day Trip</div>
@@ -902,7 +903,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
 <div id="registry" class="section">
   <div class="page-hero">
     <h1><em>Registry</em></h1>
-    <p>Every gift is a treasure — thank you for celebrating with us</p>
+    <p>Every gift is a treasure. Thank you for celebrating with us</p>
   </div>
 
   <!-- Registry photos -->
