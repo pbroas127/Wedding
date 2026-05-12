@@ -1127,11 +1127,11 @@ async function submitRSVP() {
 
   const data = {
     'Date': submitted,
-    'Attendance': isAttending ? 'Joyfully Accepts' : 'Regretfully Declines',
+    'Attendance': isAttending ? 'Yes' : 'No',
     'Email': email,
     '1': g1cell,
     ...guestCells,
-    'BBQ Attendance': isAttending ? (welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'No response') : 'N/A',
+    'BBQ Attendance': isAttending ? (welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : '') : 'N/A',
     'Note': document.getElementById('rsvp-message').value.trim() || ''
   };
 
