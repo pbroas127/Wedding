@@ -230,6 +230,11 @@ nav {
 .radio-label:hover { border-color: var(--sage); }
 .radio-label.selected { background: var(--sage); color: var(--cream); border-color: var(--sage); }
 input[type="radio"] { display: none; }
+.diet-check-label {
+  display: flex; align-items: center; gap: 0.6rem; cursor: pointer;
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted);
+}
+.diet-check-label input[type="checkbox"] { width: 14px; height: 14px; accent-color: var(--sage); cursor: pointer; flex-shrink: 0; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .rsvp-success { text-align: center; padding: 4rem 2rem; display: none; }
 .rsvp-success h3 {
@@ -937,23 +942,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
       <h2>Will you be <em>joining us?</em></h2>
       <p class="rsvp-intro">We are so excited to celebrate with you in Rome. Please fill out the form below for each guest in your party. Kindly reply by February 1st, 2027.</p>
 
-      <div class="form-group">
-        <label class="form-label">Your Full Name</label>
-        <input type="text" class="form-input" id="rsvp-name" placeholder="First &amp; Last Name">
-      </div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input type="email" class="form-input" id="rsvp-email" placeholder="your@email.com">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Number of Guests</label>
-          <select class="form-select" id="rsvp-guests" onchange="updateGuestFields()">
-            <option>1</option><option>2</option><option>3</option><option>4</option>
-          </select>
-        </div>
-      </div>
-
+      <!-- 1. Attendance -->
       <div class="form-group">
         <label class="form-label">Will You Attend?</label>
         <div class="radio-group">
@@ -966,13 +955,42 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
         </div>
       </div>
 
+      <!-- 2. Number of guests -->
+      <div class="form-group">
+        <label class="form-label">Number of Guests</label>
+        <select class="form-select" id="rsvp-guests" onchange="updateGuestFields()">
+          <option>1</option><option>2</option><option>3</option><option>4</option>
+        </select>
+      </div>
+
+      <!-- 3. Your name + email -->
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Your Full Name</label>
+          <input type="text" class="form-input" id="rsvp-name" placeholder="First &amp; Last Name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" id="rsvp-email" placeholder="your@email.com">
+        </div>
+      </div>
+
+      <!-- 4. Your dietary -->
+      <div class="form-group">
+        <label class="diet-check-label">
+          <input type="checkbox" id="diet-check-1" onchange="toggleDiet(1)">
+          <span>I have dietary restrictions</span>
+        </label>
+        <div id="diet-input-1" style="display:none; margin-top:0.8rem;">
+          <input type="text" class="form-input" id="rsvp-diet-1" placeholder="Vegetarian, gluten-free, allergies, etc.">
+        </div>
+      </div>
+
+      <!-- 5. Extra guest fields (dynamic) -->
       <div id="extra-guests-fields"></div>
 
+      <!-- 6. Attending-only fields -->
       <div id="attend-yes-fields">
-        <div class="form-group">
-          <label class="form-label">Dietary Restrictions</label>
-          <input type="text" class="form-input" id="rsvp-diet" placeholder="Vegetarian, gluten-free, allergies, etc.">
-        </div>
         <div class="form-group">
           <label class="form-label">Will You Attend the Welcome BBQ? (April 18)</label>
           <div class="radio-group">
@@ -982,6 +1000,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
         </div>
       </div>
 
+      <!-- 7. Message -->
       <div class="form-group">
         <label class="form-label">Message to Olivia &amp; Ethan</label>
         <textarea class="form-textarea" id="rsvp-message" placeholder="Share a note, a memory, or your excitement..."></textarea>
@@ -1019,6 +1038,11 @@ function selectWelcome(val) {
   document.getElementById('lbl-w-no').classList.toggle('selected', val === 'no');
 }
 
+function toggleDiet(n) {
+  const checked = document.getElementById(`diet-check-${n}`).checked;
+  document.getElementById(`diet-input-${n}`).style.display = checked ? 'block' : 'none';
+}
+
 document.getElementById('attend-yes-fields').style.display = 'none';
 
 function updateGuestFields() {
@@ -1030,6 +1054,15 @@ function updateGuestFields() {
       <div class="form-group">
         <label class="form-label">Guest ${i} Full Name</label>
         <input type="text" class="form-input" id="rsvp-guest-${i}" placeholder="First &amp; Last Name">
+      </div>
+      <div class="form-group">
+        <label class="diet-check-label">
+          <input type="checkbox" id="diet-check-${i}" onchange="toggleDiet(${i})">
+          <span>Guest ${i} has dietary restrictions</span>
+        </label>
+        <div id="diet-input-${i}" style="display:none; margin-top:0.8rem;">
+          <input type="text" class="form-input" id="rsvp-diet-${i}" placeholder="Vegetarian, gluten-free, allergies, etc.">
+        </div>
       </div>`;
   }
 }
@@ -1047,21 +1080,31 @@ async function submitRSVP() {
   btn.disabled = true;
 
   const guestCount = parseInt(document.getElementById('rsvp-guests').value);
-  const extraGuests = {};
+
+  // Collect dietary for guest 1
+  const diet1checked = document.getElementById('diet-check-1').checked;
+  const diet1 = diet1checked ? (document.getElementById('rsvp-diet-1').value.trim() || 'Yes (not specified)') : 'None';
+
+  // Collect extra guests + their dietary
+  const guestData = {};
   for (let i = 2; i <= guestCount; i++) {
-    const el = document.getElementById(`rsvp-guest-${i}`);
-    extraGuests[`guest_${i}_name`] = el ? el.value.trim() || 'Not provided' : 'Not provided';
+    const nameEl = document.getElementById(`rsvp-guest-${i}`);
+    const dietChecked = document.getElementById(`diet-check-${i}`) && document.getElementById(`diet-check-${i}`).checked;
+    const dietEl = document.getElementById(`rsvp-diet-${i}`);
+    guestData[`Guest ${i} Name`] = nameEl ? nameEl.value.trim() || 'Not provided' : 'Not provided';
+    guestData[`Guest ${i} Dietary`] = dietChecked ? (dietEl && dietEl.value.trim() || 'Yes (not specified)') : 'None';
   }
 
   const data = {
-    name,
-    email,
-    guests: guestCount,
-    ...extraGuests,
-    attending: attendVal === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines',
-    dietary: document.getElementById('rsvp-diet').value.trim() || 'None',
-    welcome_bbq: welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'N/A',
-    message: document.getElementById('rsvp-message').value.trim() || 'None'
+    '_subject': `RSVP from ${name}`,
+    'Full Name': name,
+    'Email': email,
+    'Attending': attendVal === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines',
+    'Number of Guests': guestCount,
+    'Guest 1 Dietary': diet1,
+    ...guestData,
+    'Welcome BBQ': attendVal === 'yes' ? (welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'No response') : 'N/A',
+    'Message': document.getElementById('rsvp-message').value.trim() || 'None'
   };
 
   try {
