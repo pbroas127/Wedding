@@ -1004,64 +1004,6 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
 </div>
 
 <script>
-// ── REGISTRY ──
-const registryItems = [
-  { id:1, name:'Le Creuset Dutch Oven', store:'Williams Sonoma', price:'$420', category:'kitchen', claimed:false, url:'https://www.williams-sonoma.com', img:'https://images.unsplash.com/photo-1585515320310-259814833e62?w=400&q=80' },
-  { id:2, name:'Staub Cast Iron Skillet', store:'Williams Sonoma', price:'$199', category:'kitchen', claimed:true, url:'https://www.williams-sonoma.com', img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80' },
-  { id:3, name:'KitchenAid Stand Mixer', store:'Crate & Barrel', price:'$499', category:'kitchen', claimed:false, url:'https://www.crateandbarrel.com', img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80' },
-  { id:4, name:'Parachute Linen Duvet Set', store:'Parachute', price:'$349', category:'home', claimed:false, url:'https://www.parachutehome.com', img:'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&q=80' },
-  { id:5, name:'Anthropologie Rug 8x10', store:'Anthropologie', price:'$698', category:'home', claimed:true, url:'https://www.anthropologie.com', img:'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=400&q=80' },
-  { id:6, name:'Rome Cooking Class for Two', store:'Airbnb Experiences', price:'$180', category:'experience', claimed:false, url:'https://www.airbnb.com/experiences', img:'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&q=80' },
-  { id:7, name:'Amalfi Coast Day Trip', store:'Viator', price:'$220', category:'experience', claimed:false, url:'https://www.viator.com', img:'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=400&q=80' },
-  { id:8, name:'Wine & Cheese Tasting', store:'Airbnb Experiences', price:'$95', category:'experience', claimed:true, url:'https://www.airbnb.com/experiences', img:'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&q=80' },
-  { id:9, name:'Marble Cheese Board Set', store:'Crate & Barrel', price:'$89', category:'kitchen', claimed:false, url:'https://www.crateandbarrel.com', img:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=400&q=80' },
-  { id:10, name:'Linen Table Runner Set', store:'West Elm', price:'$78', category:'home', claimed:false, url:'https://www.westelm.com', img:'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=400&q=80' },
-  { id:11, name:'Espresso Machine Delonghi', store:'Williams Sonoma', price:'$599', category:'kitchen', claimed:true, url:'https://www.williams-sonoma.com', img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80' },
-  { id:12, name:'Honeymoon Fund Contribution', store:'Zola', price:'Any amount', category:'experience', claimed:false, url:'https://www.zola.com', img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80' },
-];
-
-let claimedItems = JSON.parse(localStorage.getItem('oe_registry_claimed') || '[]');
-let currentFilter = 'all';
-
-function renderRegistry(filter) {
-  const grid = document.getElementById('registry-grid');
-  let items = registryItems;
-  if (filter === 'available') items = items.filter(i => !claimedItems.includes(i.id) && !i.claimed);
-  else if (filter !== 'all') items = items.filter(i => i.category === filter);
-
-  grid.innerHTML = items.map(item => {
-    const isClaimed = item.claimed || claimedItems.includes(item.id);
-    return `<div class="registry-item ${isClaimed ? 'claimed' : ''}" data-category="${item.category}">
-      ${isClaimed ? '<div class="claimed-badge">Gifted</div>' : ''}
-      <div class="item-category">${item.category}</div>
-      <div class="item-img" style="background-image:url('${item.img}');"></div>
-      <div class="item-name">${item.name}</div>
-      <div class="item-store">${item.store}</div>
-      <div class="item-price">${item.price}</div>
-      ${isClaimed
-        ? '<button class="btn btn-outline disabled" disabled>Already Gifted</button>'
-        : `<a href="${item.url}" target="_blank" class="btn btn-sage" onclick="markClaimed(${item.id})">Purchase Gift &rarr;</a>`}
-    </div>`;
-  }).join('');
-}
-
-function markClaimed(id) {
-  if (!claimedItems.includes(id)) {
-    claimedItems.push(id);
-    localStorage.setItem('oe_registry_claimed', JSON.stringify(claimedItems));
-  }
-  setTimeout(() => renderRegistry(currentFilter), 600);
-}
-
-function filterRegistry(filter, btn) {
-  currentFilter = filter;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderRegistry(filter);
-}
-
-renderRegistry('all');
-
 // ── RSVP ──
 let attendVal = '', welcomeVal = '';
 
