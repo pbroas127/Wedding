@@ -960,6 +960,8 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
         <label class="form-label">Number of Guests</label>
         <select class="form-select" id="rsvp-guests" onchange="updateGuestFields()">
           <option>1</option><option>2</option><option>3</option><option>4</option>
+          <option>5</option><option>6</option><option>7</option><option>8</option>
+          <option>9</option><option>10</option>
         </select>
       </div>
 
@@ -975,14 +977,16 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
         </div>
       </div>
 
-      <!-- 4. Your dietary -->
-      <div class="form-group">
-        <label class="diet-check-label">
-          <input type="checkbox" id="diet-check-1" onchange="toggleDiet(1)">
-          <span>I have dietary restrictions</span>
-        </label>
-        <div id="diet-input-1" style="display:none; margin-top:0.8rem;">
-          <input type="text" class="form-input" id="rsvp-diet-1" placeholder="Vegetarian, gluten-free, allergies, etc.">
+      <!-- 4. Your dietary (attending only) -->
+      <div id="guest1-dietary" style="display:none;">
+        <div class="form-group">
+          <label class="diet-check-label">
+            <input type="checkbox" id="diet-check-1" onchange="toggleDiet(1)">
+            <span>I have dietary restrictions</span>
+          </label>
+          <div id="diet-input-1" style="display:none; margin-top:0.8rem;">
+            <input type="text" class="form-input" id="rsvp-diet-1" placeholder="Vegetarian, gluten-free, allergies, etc.">
+          </div>
         </div>
       </div>
 
@@ -1029,7 +1033,10 @@ function selectAttend(val) {
   attendVal = val;
   document.getElementById('lbl-yes').classList.toggle('selected', val === 'yes');
   document.getElementById('lbl-no').classList.toggle('selected', val === 'no');
-  document.getElementById('attend-yes-fields').style.display = val === 'yes' ? 'block' : 'none';
+  const isYes = val === 'yes';
+  document.getElementById('attend-yes-fields').style.display = isYes ? 'block' : 'none';
+  document.getElementById('guest1-dietary').style.display = isYes ? 'block' : 'none';
+  updateGuestFields();
 }
 
 function selectWelcome(val) {
@@ -1050,11 +1057,7 @@ function updateGuestFields() {
   const container = document.getElementById('extra-guests-fields');
   container.innerHTML = '';
   for (let i = 2; i <= count; i++) {
-    container.innerHTML += `
-      <div class="form-group">
-        <label class="form-label">Guest ${i} Full Name</label>
-        <input type="text" class="form-input" id="rsvp-guest-${i}" placeholder="First &amp; Last Name">
-      </div>
+    const dietBlock = attendVal === 'yes' ? `
       <div class="form-group">
         <label class="diet-check-label">
           <input type="checkbox" id="diet-check-${i}" onchange="toggleDiet(${i})">
@@ -1063,7 +1066,12 @@ function updateGuestFields() {
         <div id="diet-input-${i}" style="display:none; margin-top:0.8rem;">
           <input type="text" class="form-input" id="rsvp-diet-${i}" placeholder="Vegetarian, gluten-free, allergies, etc.">
         </div>
-      </div>`;
+      </div>` : '';
+    container.innerHTML += `
+      <div class="form-group">
+        <label class="form-label">Guest ${i} Full Name</label>
+        <input type="text" class="form-input" id="rsvp-guest-${i}" placeholder="First &amp; Last Name">
+      </div>${dietBlock}`;
   }
 }
 
@@ -1080,41 +1088,48 @@ async function submitRSVP() {
   btn.disabled = true;
 
   const guestCount = parseInt(document.getElementById('rsvp-guests').value);
+  const isAttending = attendVal === 'yes';
 
-  // Collect dietary for guest 1
-  const diet1checked = document.getElementById('diet-check-1').checked;
-  const diet1 = diet1checked ? (document.getElementById('rsvp-diet-1').value.trim() || 'Yes (not specified)') : 'None';
+  // Guest 1 dietary
+  const diet1checked = isAttending && document.getElementById('diet-check-1') && document.getElementById('diet-check-1').checked;
+  const diet1 = diet1checked ? (document.getElementById('rsvp-diet-1').value.trim() || 'Yes (unspecified)') : 'None';
 
-  // Collect extra guests + their dietary
+  // Extra guests
   const guestData = {};
   for (let i = 2; i <= guestCount; i++) {
     const nameEl = document.getElementById(`rsvp-guest-${i}`);
-    const dietChecked = document.getElementById(`diet-check-${i}`) && document.getElementById(`diet-check-${i}`).checked;
-    const dietEl = document.getElementById(`rsvp-diet-${i}`);
     guestData[`Guest ${i} Name`] = nameEl ? nameEl.value.trim() || 'Not provided' : 'Not provided';
-    guestData[`Guest ${i} Dietary`] = dietChecked ? (dietEl && dietEl.value.trim() || 'Yes (not specified)') : 'None';
+    if (isAttending) {
+      const dietChecked = document.getElementById(`diet-check-${i}`) && document.getElementById(`diet-check-${i}`).checked;
+      const dietEl = document.getElementById(`rsvp-diet-${i}`);
+      guestData[`Guest ${i} Dietary`] = dietChecked ? (dietEl && dietEl.value.trim() || 'Yes (unspecified)') : 'None';
+    }
   }
 
+  const now = new Date();
+  const submitted = now.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
+    + ' at ' + now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
+
   const data = {
-    '_subject': `RSVP from ${name}`,
+    'Submitted': submitted,
     'Full Name': name,
     'Email': email,
-    'Attending': attendVal === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines',
-    'Number of Guests': guestCount,
-    'Guest 1 Dietary': diet1,
+    'Attending': isAttending ? 'Joyfully Accepts' : 'Regretfully Declines',
+    'Total Guests': guestCount,
+    'Guest 1 Dietary': isAttending ? diet1 : 'N/A',
     ...guestData,
-    'Welcome BBQ': attendVal === 'yes' ? (welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'No response') : 'N/A',
-    'Message': document.getElementById('rsvp-message').value.trim() || 'None'
+    'Welcome BBQ (Apr 18)': isAttending ? (welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'No response') : 'N/A',
+    'Message': document.getElementById('rsvp-message').value.trim() || ''
   };
 
   try {
-    const res = await fetch('https://formspree.io/f/xwvyyoka', {
+    const res = await fetch('https://api.sheetmonkey.io/form/nyJYyLpbWdiZXZS6gjKaqy', {
       method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
     if (res.ok) {
-      const msg = attendVal === 'yes'
+      const msg = isAttending
         ? `Thank you, ${name}! We're thrilled you'll be joining us in Rome. Expect more details closer to the date.`
         : `Thank you for letting us know, ${name}. We'll miss you and hope to celebrate together soon!`;
       document.getElementById('rsvp-success-msg').textContent = msg;
