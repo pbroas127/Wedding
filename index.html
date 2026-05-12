@@ -1022,19 +1022,52 @@ function selectWelcome(val) {
 
 document.getElementById('attend-yes-fields').style.display = 'none';
 
-function submitRSVP() {
+async function submitRSVP() {
   const name = document.getElementById('rsvp-name').value.trim();
   const email = document.getElementById('rsvp-email').value.trim();
   if (!name || !email || !attendVal) {
     alert('Please fill in your name, email, and attendance selection.');
     return;
   }
-  const msg = attendVal === 'yes'
-    ? `Thank you, ${name}! We're thrilled you'll be joining us in Rome. Expect more details closer to the date.`
-    : `Thank you for letting us know, ${name}. We'll miss you and hope to celebrate together soon!`;
-  document.getElementById('rsvp-success-msg').textContent = msg;
-  document.getElementById('rsvp-form-container').style.display = 'none';
-  document.getElementById('rsvp-success').style.display = 'block';
+
+  const btn = document.querySelector('#rsvp-form-container .btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = {
+    name,
+    email,
+    guests: document.getElementById('rsvp-guests').value,
+    attending: attendVal === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines',
+    dietary: document.getElementById('rsvp-diet').value.trim() || 'None',
+    welcome_bbq: welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'N/A',
+    song_request: document.getElementById('rsvp-song').value.trim() || 'None',
+    message: document.getElementById('rsvp-message').value.trim() || 'None'
+  };
+
+  try {
+    const res = await fetch('https://formspree.io/f/xwvyyoka', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      const msg = attendVal === 'yes'
+        ? `Thank you, ${name}! We're thrilled you'll be joining us in Rome. Expect more details closer to the date.`
+        : `Thank you for letting us know, ${name}. We'll miss you and hope to celebrate together soon!`;
+      document.getElementById('rsvp-success-msg').textContent = msg;
+      document.getElementById('rsvp-form-container').style.display = 'none';
+      document.getElementById('rsvp-success').style.display = 'block';
+    } else {
+      btn.textContent = 'Send Your RSVP';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    }
+  } catch(e) {
+    btn.textContent = 'Send Your RSVP';
+    btn.disabled = false;
+    alert('Something went wrong. Please check your connection and try again.');
+  }
 }
 
 // ── Q&A ──
