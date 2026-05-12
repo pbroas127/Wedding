@@ -947,7 +947,7 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
         </div>
         <div class="form-group">
           <label class="form-label">Number of Guests</label>
-          <select class="form-select" id="rsvp-guests">
+          <select class="form-select" id="rsvp-guests" onchange="updateGuestFields()">
             <option>1</option><option>2</option><option>3</option><option>4</option>
           </select>
         </div>
@@ -965,6 +965,8 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
         </div>
       </div>
 
+      <div id="extra-guests-fields"></div>
+
       <div id="attend-yes-fields">
         <div class="form-group">
           <label class="form-label">Dietary Restrictions</label>
@@ -976,10 +978,6 @@ footer p { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
             <label class="radio-label" id="lbl-w-yes" onclick="selectWelcome('yes')">Yes, I'll be there!</label>
             <label class="radio-label" id="lbl-w-no" onclick="selectWelcome('no')">Unable to make it</label>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Song Request</label>
-          <input type="text" class="form-input" id="rsvp-song" placeholder="What song will get you on the dance floor?">
         </div>
       </div>
 
@@ -1022,6 +1020,19 @@ function selectWelcome(val) {
 
 document.getElementById('attend-yes-fields').style.display = 'none';
 
+function updateGuestFields() {
+  const count = parseInt(document.getElementById('rsvp-guests').value);
+  const container = document.getElementById('extra-guests-fields');
+  container.innerHTML = '';
+  for (let i = 2; i <= count; i++) {
+    container.innerHTML += `
+      <div class="form-group">
+        <label class="form-label">Guest ${i} Full Name</label>
+        <input type="text" class="form-input" id="rsvp-guest-${i}" placeholder="First &amp; Last Name">
+      </div>`;
+  }
+}
+
 async function submitRSVP() {
   const name = document.getElementById('rsvp-name').value.trim();
   const email = document.getElementById('rsvp-email').value.trim();
@@ -1034,14 +1045,21 @@ async function submitRSVP() {
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
+  const guestCount = parseInt(document.getElementById('rsvp-guests').value);
+  const extraGuests = {};
+  for (let i = 2; i <= guestCount; i++) {
+    const el = document.getElementById(`rsvp-guest-${i}`);
+    extraGuests[`guest_${i}_name`] = el ? el.value.trim() || 'Not provided' : 'Not provided';
+  }
+
   const data = {
     name,
     email,
-    guests: document.getElementById('rsvp-guests').value,
+    guests: guestCount,
+    ...extraGuests,
     attending: attendVal === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines',
     dietary: document.getElementById('rsvp-diet').value.trim() || 'None',
     welcome_bbq: welcomeVal === 'yes' ? 'Yes' : welcomeVal === 'no' ? 'No' : 'N/A',
-    song_request: document.getElementById('rsvp-song').value.trim() || 'None',
     message: document.getElementById('rsvp-message').value.trim() || 'None'
   };
 
